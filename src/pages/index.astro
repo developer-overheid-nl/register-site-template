@@ -1,0 +1,23 @@
+---
+import "@rijkshuisstijl-community/design-tokens/dist/uitvoerend-robijnrood/root.css";
+import { Alert, PillBadge, SiteLogo } from "@developer-overheid-nl/don-register-components";
+import { DonBasic } from "@developer-overheid-nl/don-register-layouts";
+import appConfig from "../../app.config";
+
+console.log(DonBasic);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Register</title>
+	</head>
+	<body>
+		<DonBasic appConfig={appConfig} titlePage="Register">
+			<Alert type="warning">Test</Alert>
+		</DonBasic>
+	</body>
+</html>

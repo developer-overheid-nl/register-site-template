@@ -1,0 +1,12 @@
+{
+  "name": "@your_org_name/components",
+  "version": "0.0.1-alpha.1",
+  "description": "Custom components for register site template",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "YOUR_ORG_NAME",
+  "license": "EUPL-1.2"
+}

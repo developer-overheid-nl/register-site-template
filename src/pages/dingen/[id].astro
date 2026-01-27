@@ -1,0 +1,85 @@
+---
+export const prerender = false;
+
+import {
+  API_ENDPOINT,
+  API_URL,
+} from "astro:env/server";
+import {
+  Alert,
+  AlignBox,
+  Block,
+  CopyButton,
+  DataBadgeLink,
+  DataSummary,
+  DataSummaryItem,
+  getAppearance,
+  getDate,
+  Heading,
+  HeadingGroup,
+  Icon,
+  IconBadge,
+  Link,
+  Markdown,
+  Paragraph,
+  PillBadge,
+  ReadOnlyTextInput,
+  ScoreBadge,
+} from "@developer-overheid-nl/don-register-components";
+import i18n from "@developer-overheid-nl/don-register-components/i18n";
+import {
+  DonBasic,
+  DonDetail,
+} from "@developer-overheid-nl/don-register-layouts";
+import { t } from "i18next";
+import createClient from "openapi-fetch";
+import appConfig from "../../../app.config";
+import type { paths } from "../../types/api-schema";
+
+const { id = "" } = Astro.params;
+const THINGS_RESOURCE: keyof paths = `/things/{id}`;
+
+const client = createClient<paths>({
+  baseUrl: `${API_URL}/${API_ENDPOINT}`,
+});
+const {
+  data,
+  error,
+  response: { headers },
+} = await client.GET(THINGS_RESOURCE, {
+  params: {
+    path: { id },
+  },
+});
+
+// console.log("fetched thing data:", data, error);
+
+const details = error ? null : data;
+---
+
+{ error && (
+  <DonBasic appConfig={appConfig} titlePage="Ding niet gevonden">
+    <Alert type="error">{(error as unknown as any).message || (error as unknown as any).detail || t('components.fuzz-error')}</Alert>
+    <Paragraph>{t('components.item-not-found-error')}</Paragraph>
+  </DonBasic>
+)}
+
+{details && (
+  <DonDetail appConfig={appConfig} titlePage={details.name}>
+    <HeadingGroup
+      slot="header"
+      title={`${t(`pages.details-of-item`)}: ${details.name}`}
+      level={2} 
+    >
+      <Paragraph>
+          <Link className={`styles.orgLink`} href={new URL(`./?category=${encodeURIComponent(details.category)}`, Astro.url).toString()}>
+              {details.category}
+          </Link>
+      </Paragraph>
+    </HeadingGroup>
+    <Fragment slot="description">
+      <Heading level={3} className="sr-only">{t(`pages.description`)}</Heading>
+      <div class="utrecht-html"><Markdown text={details.description} minHeadingDepth={4} /></div>
+    </Fragment>
+</DonDetail>)
+}

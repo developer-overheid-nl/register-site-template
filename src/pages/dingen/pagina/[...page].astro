@@ -1,0 +1,143 @@
+---
+export const prerender = false;
+
+import {
+  API_ENDPOINT,
+  API_URL,
+} from "astro:env/server";
+import {
+  Alert,
+  Article,
+  CardAsLink,
+  CardsList,
+  CardsListItem,
+  DataBadgeLink,
+  Filters,
+  getAppearance,
+  getDate,
+  Heading,
+  HeadingGroup,
+  IconBadge,
+  Markdown,
+  Pagination,
+  Paragraph,
+  PillBadge,
+  ScoreBadge,
+  Search,
+} from "@developer-overheid-nl/don-register-components";
+// import {i18nInstance} from "@developer-overheid-nl/don-register-components/i18n";
+import { CopyButton } from "@developer-overheid-nl/don-register-components/client";
+import {
+  DonOverview,
+  // getPagination,
+  getRouting,
+  // parseHeaders,
+} from "@developer-overheid-nl/don-register-layouts";
+import { getPagination, parseHeaders } from "@your_org_name/components";
+import { t } from "i18next";
+import createClient from "openapi-fetch";
+import appConfig from "../../../../app.config";
+import { Content as Intro } from "../../../partials/intro.md";
+import type { paths } from "../../../types/api-schema";
+
+const { page = 1 } = Astro.params;
+
+const THINGS_RESOURCE: keyof paths = `/things`;
+// const CATEGORIES_RESOURCE: keyof paths = `/categories`;
+
+const routingObj = getRouting(
+  Astro.url,
+  Astro.originPathname,
+  Astro.routePattern,
+  Astro.params,
+);
+
+const client = createClient<paths>({
+  baseUrl: `${API_URL}/${API_ENDPOINT}`,
+});
+
+const {
+  data,
+  error,
+  response: { headers },
+} = await client
+  .GET(THINGS_RESOURCE, {
+    params: {
+      query: {
+        _page: Number(page),
+        ...routingObj.query,
+      },
+    },
+  })
+  .catch((error) => {
+    console.error(error);
+    return { data: null, error, response: new Response() };
+  });
+
+const paginationObj = parseHeaders(headers);
+const pagination = getPagination(paginationObj, routingObj.url);
+
+// console.log(i18nInstance)
+const { i18n: i18nApp } = appConfig;
+// i18n.addResourceBundle(
+//   i18n.language,
+//   "translation",
+//   i18nApp ? i18nApp[i18n.language] : {},
+//   true,
+//   true,
+// );
+
+// console.log('Fetched data for page', {page, data, error, headers, paginationObj, pagination});
+
+const items = error ? null : data;
+---
+
+<DonOverview appConfig={appConfig} titlePage={t('pages.overview')}>
+  <Article className="markdown-content utrecht-html" slot="header"><Intro /></Article>
+
+  { error && (
+    <Alert type="error">{(error as unknown as any).message || (error as unknown as any).error_msg || t('components.fuzz-error')}</Alert>
+  )}
+
+  { items && items.length > 0 ? (
+    <CardsList>
+      {
+        items.map((item, index, array) => (
+          <CardsListItem index={index} setsize={array.length}>
+            <CardAsLink
+              href={new URL(`../${item.id}`, routingObj?.url).toString()}
+              linkLabel={t('components.view-details')}
+            >
+              <HeadingGroup slot="heading" title={item.name || '🐒'} level={2} appearanceLevel={4}>
+                <div class="subtitle moveAbove" slot="subTitle">
+                  <DataBadgeLink appearance="subtle" className="catLink" href={new URL(`../?category=${encodeURIComponent(item.category)}`, routingObj.url).toString()}>
+                    {item.category}
+                  </DataBadgeLink>
+                </div>
+              </HeadingGroup>
+              <div slot="description" class="description">
+                <Paragraph>{item.description}</Paragraph>
+              </div>
+            </CardAsLink>
+          </CardsListItem>
+        ))
+      }
+    </CardsList>
+  ) : 
+  ( 
+    <Alert type="warning">{t('components.no-items-found')}</Alert> 
+  )}
+  <Pagination slot="pagination" {...pagination} />
+
+</DonOverview>
+
+<style>
+  .subtitle {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .catLink {
+    font-size: 0.875rem;
+  }
+</style>

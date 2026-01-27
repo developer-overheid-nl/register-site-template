@@ -1,0 +1,12 @@
+packages:
+  - packages/*
+  - proprietary
+
+catalog:
+  '@developer-overheid-nl/don-register-components': latest
+  '@developer-overheid-nl/don-register-layouts': latest
+  '@developer-overheid-nl/don-register-locales': latest
+  '@developer-overheid-nl/proprietary-example': latest
+  i18next: 25.7.3
+  openapi-fetch: 0.15.0
+  openapi-typescript: 7.10.1

@@ -1,0 +1,10 @@
+---
+const searchParams = Astro.url.searchParams;
+const page = searchParams.get("pagina");
+searchParams.delete("pagina");
+
+// `/dingen` will show page one of the overview, filtered views included
+return Astro.rewrite(
+  new URL(`../dingen/pagina/1?${searchParams.toString()}`, Astro.url),
+);
+---

@@ -1,0 +1,5 @@
+apis:
+  dingen-api@v1:
+    root: https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/refs/heads/main/openapi.json
+    x-openapi-ts:
+      output: ./src/types/api-schema.ts
