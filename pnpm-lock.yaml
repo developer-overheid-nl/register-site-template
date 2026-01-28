@@ -10,8 +10,8 @@ catalogs:
       specifier: 0.0.1-beta.6
       version: 0.0.1-beta.6
     '@developer-overheid-nl/don-register-layouts':
-      specifier: latest
-      version: 0.0.1-beta.1
+      specifier: 0.0.1-beta.2
+      version: 0.0.1-beta.2
     '@developer-overheid-nl/don-register-locales':
       specifier: latest
       version: 0.0.1-beta.1
@@ -37,13 +37,13 @@ importers:
         version: 0.0.1-beta.6(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@developer-overheid-nl/don-register-layouts':
         specifier: 'catalog:'
-        version: 0.0.1-beta.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/parse-link-header@2.0.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 0.0.1-beta.2(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/parse-link-header@2.0.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@developer-overheid-nl/don-register-locales':
         specifier: 'catalog:'
         version: 0.0.1-beta.1(typescript@5.9.3)
       '@developer-overheid-nl/proprietary':
         specifier: npm:@developer-overheid-nl/proprietary-example@*
-        version: '@developer-overheid-nl/proprietary-example@0.0.1-beta.1'
+        version: '@developer-overheid-nl/proprietary-example@0.0.1-beta.2'
       '@rijkshuisstijl-community/design-tokens':
         specifier: ^11.1.0
         version: 11.1.0
@@ -345,14 +345,6 @@ packages:
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
 
-  '@developer-overheid-nl/don-register-components@0.0.1-beta.3':
-    resolution: {integrity: sha512-K6smhIcbeJt1Sk+uLlN7APsOKu4KJhU4UrlojLBZ2HvVPComlyM7prRrcMIOoP/OJ6jnPh1fS4xoZ0nmNqjb3Q==}
-    peerDependencies:
-      '@types/react': '>=19.2 <19.3'
-      '@types/react-dom': '>=19.2 <19.3'
-      react: 19.2.3
-      react-dom: 19.2.3
-
   '@developer-overheid-nl/don-register-components@0.0.1-beta.6':
     resolution: {integrity: sha512-ymeXdJv5Ys/tMd1smlmR66cy2kFPllrJw/HEefkS9+7vOf/hS9x59Z6s6xJ/Cwk0ePbJg8OwxTgGg7Pz9Fz3pQ==}
     peerDependencies:
@@ -361,8 +353,8 @@ packages:
       react: 19.2.3
       react-dom: 19.2.3
 
-  '@developer-overheid-nl/don-register-layouts@0.0.1-beta.1':
-    resolution: {integrity: sha512-9Rqww4EK12tvMbg3BGmMksDAn4iQaxEQTMy5/qfBmdY6HxYm1bwYSelvQCDZAx/a0XDLb0YQLp6qNk1uoOp4Vw==}
+  '@developer-overheid-nl/don-register-layouts@0.0.1-beta.2':
+    resolution: {integrity: sha512-y/k0WcffxjgQWiWMDQsAKkHpgdqjbcTN2deA6D/C/G2zNdnqcprZhRCgawVcEKUvMI22S/qMrB2uYRwvS/+cSg==}
     peerDependencies:
       '@types/parse-link-header': ^2.0.3
       '@types/react': '>=19.2 <19.3'
@@ -373,8 +365,8 @@ packages:
   '@developer-overheid-nl/don-register-locales@0.0.1-beta.1':
     resolution: {integrity: sha512-1VpzqCyKgwB5QHvzqEHyew3Ll/Um7fQ5m3khdENFg6xwHN81LlkeyoJWp6Xx2TTwTUoAUxXx9w/UfdEhkXJjyA==}
 
-  '@developer-overheid-nl/proprietary-example@0.0.1-beta.1':
-    resolution: {integrity: sha512-ugt8vUYutXVeVXjEQ+PcM+afhE8tAetL2AvQbNTKRjfsajEeYb+rEJPlK699fzLtMbOJCXBzqmw7Koc4TSYlkg==}
+  '@developer-overheid-nl/proprietary-example@0.0.1-beta.2':
+    resolution: {integrity: sha512-X22WTK8kaXSERDGrYs05czbe0bxr6Ys3iccKXUHhdoGaO5HpKt9BGvYRltNQIv/hwB/ANvlhMl4fwOe4bIaShg==}
 
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
@@ -3918,36 +3910,6 @@ snapshots:
       human-id: 4.1.3
       prettier: 2.8.8
 
-  '@developer-overheid-nl/don-register-components@0.0.1-beta.3(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
-    dependencies:
-      '@developer-overheid-nl/don-register-locales': 0.0.1-beta.1(typescript@5.9.3)
-      '@developer-overheid-nl/proprietary': '@developer-overheid-nl/proprietary-example@0.0.1-beta.1'
-      '@rijkshuisstijl-community/components-css': 11.0.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1)
-      '@rijkshuisstijl-community/components-react': 10.0.0(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@babel/runtime@7.28.6)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@rijkshuisstijl-community/design-tokens': 11.0.0
-      '@types/parse-link-header': 2.0.3
-      '@types/react': 19.2.8
-      '@types/react-dom': 19.2.3(@types/react@19.2.8)
-      clsx: 2.1.1
-      i18next: 25.7.3(typescript@5.9.3)
-      parse-link-header: 2.0.0
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-      react-i18next: 16.5.1(i18next@25.7.3(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
-      react-markdown: 10.1.0(@types/react@19.2.8)(react@19.2.3)
-      remark-behead: 3.1.0
-    transitivePeerDependencies:
-      - '@amsterdam/design-system-assets'
-      - '@amsterdam/design-system-css'
-      - '@amsterdam/design-system-tokens'
-      - '@babel/runtime'
-      - date-fns
-      - react-native
-      - react-vega
-      - supports-color
-      - typescript
-      - vega
-
   '@developer-overheid-nl/don-register-components@0.0.1-beta.6(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@developer-overheid-nl/don-register-locales': 0.0.1-beta.1(typescript@5.9.3)
@@ -3977,9 +3939,9 @@ snapshots:
       - typescript
       - vega
 
-  '@developer-overheid-nl/don-register-layouts@0.0.1-beta.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/parse-link-header@2.0.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@developer-overheid-nl/don-register-layouts@0.0.1-beta.2(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/parse-link-header@2.0.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
-      '@developer-overheid-nl/don-register-components': 0.0.1-beta.3(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@developer-overheid-nl/don-register-components': 0.0.1-beta.6(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@developer-overheid-nl/don-register-locales': 0.0.1-beta.1(typescript@5.9.3)
       '@rijkshuisstijl-community/components-css': 11.0.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1)
       '@rijkshuisstijl-community/components-react': 10.0.0(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@babel/runtime@7.28.6)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -4010,7 +3972,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@developer-overheid-nl/proprietary-example@0.0.1-beta.1':
+  '@developer-overheid-nl/proprietary-example@0.0.1-beta.2':
     dependencies:
       '@fontsource/fira-sans': 5.2.7
       react: 19.2.3

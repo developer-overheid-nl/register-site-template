@@ -165,7 +165,24 @@ export type $defs = Record<string, never>;
 export interface operations {
     getCategories: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description Filter by category ID */
+                id?: number;
+                /** @description Filter by category name */
+                name?: string;
+                /** @description Filter by description */
+                description?: string;
+                /** @description Full-text search across all fields */
+                q?: string;
+                /** @description Page number for pagination (default: 1) */
+                _page?: number;
+                /** @description Number of items per page (default: 10) */
+                _limit?: number;
+                /** @description Field to sort by */
+                _sort?: "id" | "name" | "description";
+                /** @description Sort order: 'asc' for ascending or 'desc' for descending (default: asc) */
+                _order?: "asc" | "desc";
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -302,8 +319,26 @@ export interface operations {
     getThings: {
         parameters: {
             query?: {
-                /** @description Filter by category name */
+                /** @description Filter by thing ID */
+                id?: number;
+                /** @description Filter by name */
+                name?: string;
+                /** @description Filter by description */
+                description?: string;
+                /** @description Filter by category */
                 category?: string;
+                /** @description Filter by Wikipedia URL */
+                wikipedia?: string;
+                /** @description Full-text search across all fields */
+                q?: string;
+                /** @description Page number for pagination (default: 1) */
+                _page?: number;
+                /** @description Number of items per page (default: 10) */
+                _limit?: number;
+                /** @description Field to sort by */
+                _sort?: "id" | "name" | "description" | "category" | "wikipedia";
+                /** @description Sort order: 'asc' for ascending or 'desc' for descending (default: asc) */
+                _order?: "asc" | "desc";
             };
             header?: never;
             path?: never;
