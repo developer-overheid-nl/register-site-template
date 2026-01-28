@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@developer-overheid-nl/don-register-components':
-      specifier: latest
-      version: 0.0.1-beta.4
+      specifier: 0.0.1-beta.6
+      version: 0.0.1-beta.6
     '@developer-overheid-nl/don-register-layouts':
       specifier: latest
       version: 0.0.1-beta.1
@@ -34,7 +34,7 @@ importers:
         version: 4.4.2(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@developer-overheid-nl/don-register-components':
         specifier: 'catalog:'
-        version: 0.0.1-beta.4(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 0.0.1-beta.6(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@developer-overheid-nl/don-register-layouts':
         specifier: 'catalog:'
         version: 0.0.1-beta.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/parse-link-header@2.0.3)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -353,8 +353,8 @@ packages:
       react: 19.2.3
       react-dom: 19.2.3
 
-  '@developer-overheid-nl/don-register-components@0.0.1-beta.4':
-    resolution: {integrity: sha512-c6wOGP76aT3oIqemvMhumNBlZ+Sbh9SVHwicvDT45vPG1hsSC5EPLzVZf/nPh63NLar/CRtJwQUxKq9OUIq+gQ==}
+  '@developer-overheid-nl/don-register-components@0.0.1-beta.6':
+    resolution: {integrity: sha512-ymeXdJv5Ys/tMd1smlmR66cy2kFPllrJw/HEefkS9+7vOf/hS9x59Z6s6xJ/Cwk0ePbJg8OwxTgGg7Pz9Fz3pQ==}
     peerDependencies:
       '@types/react': '>=19.2 <19.3'
       '@types/react-dom': '>=19.2 <19.3'
@@ -3948,7 +3948,7 @@ snapshots:
       - typescript
       - vega
 
-  '@developer-overheid-nl/don-register-components@0.0.1-beta.4(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@developer-overheid-nl/don-register-components@0.0.1-beta.6(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.28.6)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@developer-overheid-nl/don-register-locales': 0.0.1-beta.1(typescript@5.9.3)
       '@rijkshuisstijl-community/components-css': 11.0.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1)

@@ -3,7 +3,7 @@ packages:
   - proprietary
 
 catalog:
-  '@developer-overheid-nl/don-register-components': latest
+  '@developer-overheid-nl/don-register-components': 0.0.1-beta.6
   '@developer-overheid-nl/don-register-layouts': latest
   '@developer-overheid-nl/don-register-locales': latest
   '@developer-overheid-nl/proprietary-example': latest

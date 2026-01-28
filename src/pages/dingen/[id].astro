@@ -52,7 +52,20 @@ const {
   },
 });
 
-// console.log("fetched thing data:", data, error);
+const { i18n: i18nApp } = appConfig;
+const i18nPage = {
+  "pages.aside-landmark": "Meer informatie",
+};
+i18n.addResourceBundle(
+  i18n.language,
+  "translation",
+  i18nApp ? i18nApp[i18n.language] : {},
+  true,
+  true,
+);
+i18n.addResources(i18n.language, "translation", i18nPage);
+
+// console.log(i18n.getResourceBundle(i18n.language, "translation").pages, t('pages.aside-landmark'));
 
 const details = error ? null : data;
 ---
@@ -81,5 +94,11 @@ const details = error ? null : data;
       <Heading level={3} className="sr-only">{t(`pages.description`)}</Heading>
       <div class="utrecht-html"><Markdown text={details.description} minHeadingDepth={4} /></div>
     </Fragment>
-</DonDetail>)
+    <Fragment slot="aside">
+      <DataSummary appearance="row">
+        <DataSummaryItem itemKey="Wikipedia" href={details.wikipedia || undefined} itemValue="">{details.wikipedia || '-'}</DataSummaryItem>
+      </DataSummary>
+    </Fragment>
+  </DonDetail>
+  )
 }

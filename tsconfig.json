@@ -10,5 +10,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react"
+  },
+  "ts-node": {
+    "esm": true
   }
 }

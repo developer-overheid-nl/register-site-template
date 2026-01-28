@@ -25,8 +25,7 @@ import {
   ScoreBadge,
   Search,
 } from "@developer-overheid-nl/don-register-components";
-// import {i18nInstance} from "@developer-overheid-nl/don-register-components/i18n";
-import { CopyButton } from "@developer-overheid-nl/don-register-components/client";
+import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
   DonOverview,
   // getPagination,
@@ -77,15 +76,17 @@ const {
 const paginationObj = parseHeaders(headers);
 const pagination = getPagination(paginationObj, routingObj.url);
 
-// console.log(i18nInstance)
+// console.log(t('pages.overview'), t('components.prev'));
+
+// console.log(i18n)
 const { i18n: i18nApp } = appConfig;
-// i18n.addResourceBundle(
-//   i18n.language,
-//   "translation",
-//   i18nApp ? i18nApp[i18n.language] : {},
-//   true,
-//   true,
-// );
+i18n.addResourceBundle(
+  i18n.language,
+  "translation",
+  i18nApp ? i18nApp[i18n.language] : {},
+  true,
+  true,
+);
 
 // console.log('Fetched data for page', {page, data, error, headers, paginationObj, pagination});
 

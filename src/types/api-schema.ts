@@ -135,6 +135,11 @@ export interface components {
             description: string;
             /** @description Category the item belongs to */
             category: string;
+            /**
+             * Format: uri
+             * @description Optional Wikipedia URL for the item (or null)
+             */
+            wikipedia?: string | null;
         };
         ThingInput: {
             /** @description Name of the cultural item */
@@ -143,6 +148,11 @@ export interface components {
             description: string;
             /** @description Category the item belongs to */
             category: string;
+            /**
+             * Format: uri
+             * @description Optional Wikipedia URL for the item (or null)
+             */
+            wikipedia?: string | null;
         };
     };
     responses: never;
