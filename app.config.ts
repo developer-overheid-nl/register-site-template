@@ -4,6 +4,10 @@ const mainSiteUrl = "https://developer.overheid.nl";
 
 export default {
   title: "Ding-register",
+  meta: {
+    description:
+      "Welkom bij het Ding-register. Een starter template voor een register site.",
+  },
   mainSite: {
     name: "Jouw organisatie",
     url: mainSiteUrl,
