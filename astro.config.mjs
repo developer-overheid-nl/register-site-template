@@ -1,13 +1,15 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
+import { defineConfig, envField } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  integrations: [react()],
-    env: {
+  output: "server",
+  integrations: [
+    react(),
+  ],
+  env: {
     schema: {
       API_URL: envField.string({
         context: "server",
@@ -18,5 +20,5 @@ export default defineConfig({
         access: "secret",
       }),
     },
-  }
+  },
 });
