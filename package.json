@@ -1,7 +1,9 @@
 {
   "name": "@developer-overheid-nl/register-site-template",
+  "author": "developer.overheid.nl",
   "type": "module",
   "version": "0.0.2",
+  "license": "EUPL-1.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

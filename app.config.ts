@@ -5,7 +5,7 @@ const mainSiteUrl = "https://developer.overheid.nl";
 export default {
   title: "Ding-register",
   mainSite: {
-    name: "your.organisation.nl",
+    name: "Jouw organisatie",
     url: mainSiteUrl,
   },
   urlHomepage: [
@@ -53,9 +53,7 @@ export default {
       {
         title: "Mede mogelijk gemaakt door",
         text: `
-- Spullen
-- Zaken
-- Waar
+![developer.overheid.nl](/sponsors/developer-overheid-nl.svg)  
 `,
       },
       {
