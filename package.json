@@ -1,7 +1,7 @@
 {
   "name": "@developer-overheid-nl/register-site-template",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -13,17 +13,17 @@
   },
   "dependencies": {
     "@astrojs/react": "4.4.2",
-    "@developer-overheid-nl/don-register-components": "catalog:",
-    "@developer-overheid-nl/don-register-layouts": "catalog:",
-    "@developer-overheid-nl/don-register-locales": "catalog:",
+    "@developer-overheid-nl/don-register-components": "latest",
+    "@developer-overheid-nl/don-register-layouts": "latest",
+    "@developer-overheid-nl/don-register-locales": "latest",
     "@developer-overheid-nl/proprietary": "npm:@developer-overheid-nl/proprietary-example@*",
     "@rijkshuisstijl-community/design-tokens": "^11.1.0",
     "@types/react": "19.2.8",
     "@types/react-dom": "19.2.3",
     "@your_org_name/components": "workspace:*",
     "astro": "^5.16.13",
-    "i18next": "catalog:",
-    "openapi-fetch": "catalog:",
+    "i18next": "25.7.3",
+    "openapi-fetch": "0.15.0",
     "parse-link-header": "2.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -31,6 +31,6 @@
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
     "@changesets/cli": "2.29.8",
-    "openapi-typescript": "catalog:"
+    "openapi-typescript": "7.10.1"
   }
 }

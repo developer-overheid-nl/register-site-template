@@ -2,6 +2,8 @@
 
 Dit is een starter template voor een register site, gebouwd met [Astro](https://astro.build). Het is ontworpen om je te helpen snel een register site op te zetten die zoals de register sites van [developer.overheid.nl](https://developer.overheid.nl).
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/developer-overheid-nl/register-site-template?title=developer.overheid.nl%20Register%20Site%20Template)
+
 ## Projectstructuur
 
 TODO: Voeg hier een korte uitleg toe over de projectstructuur.
