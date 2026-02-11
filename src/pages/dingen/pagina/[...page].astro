@@ -43,6 +43,7 @@ const { page = 1 } = Astro.params;
 
 const THINGS_RESOURCE: keyof paths = `/things`;
 // const CATEGORIES_RESOURCE: keyof paths = `/categories`;
+const SEARCH_QUERY_KEY = "q";
 
 const routingObj = getRouting(
   Astro.url,
@@ -95,6 +96,7 @@ const items = error ? null : data;
 
 <DonOverview appConfig={appConfig} titlePage={t('pages.overview')}>
   <Article className="markdown-content utrecht-html" slot="header"><Intro /></Article>
+  <Search slot="search" searchUrl={new URL(`/dingen/zoeken`, routingObj?.url).toString()} searchKey={SEARCH_QUERY_KEY} searchTerm={routingObj.query[SEARCH_QUERY_KEY]}></Search>
 
   { error && (
     <Alert type="error">{(error as unknown as any).message || (error as unknown as any).error_msg || t('components.fuzz-error')}</Alert>
