@@ -1,0 +1,57 @@
+# This repository adheres to the publiccode.yml standard by including this
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/publiccodeyml/publiccode.yml
+
+publiccodeYmlVersion: "0.5"
+
+name: Register Site Template
+url: https://github.com/developer-overheid-nl/register-site-template
+softwareType: standalone/web
+
+platforms:
+  - web
+
+developmentStatus: development
+
+description:
+  nl:
+    shortDescription: >-
+      Starter template voor het opzetten van een register site, vergelijkbaar
+      met de register sites van developer.overheid.nl.
+    longDescription: >
+      Register Site Template is een starterskit voor organisaties die snel een
+      register site willen opzetten, vergelijkbaar met de register sites van
+      developer.overheid.nl. De template is gebouwd met Astro en React en biedt
+      een kant-en-klare projectstructuur met ondersteuning voor meertaligheid
+      via i18Next, type-veilige API-integratie via OpenAPI TypeScript en een
+      workspace-gebaseerde pakketstructuur. Organisaties kunnen de template
+      forken en direct aanpassen aan hun eigen huisstijl en gegevens.
+    features:
+      - Gebouwd met Astro voor snelle statische websites
+      - React-componenten op basis van NL Design System
+      - Meertaligheidsondersteuning via i18Next
+      - Type-veilige API-integratie met OpenAPI TypeScript
+      - Workspace-gebaseerde pakketstructuur met pnpm
+
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Geonovum
+
+intendedAudience:
+  countries:
+    - NL
+  scope:
+    - government
+
+localisation:
+  availableLanguages:
+    - nl
+  localisationReady: true
+
+maintenance:
+  type: internal
+
+  contacts:
+    - name: developer.overheid.nl
+      affiliation: Geonovum
+      email: developer.overheid@geonovum.nl
