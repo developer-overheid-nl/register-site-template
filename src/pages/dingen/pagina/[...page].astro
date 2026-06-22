@@ -5,41 +5,38 @@ import { API_ENDPOINT, API_URL } from "astro:env/server";
 import {
   Alert,
   Article,
+  Button,
   CardAsLink,
   CardsList,
   CardsListItem,
   DataBadgeLink,
-  Filters,
-  getAppearance,
-  getDate,
-  Heading,
   HeadingGroup,
-  IconBadge,
-  Markdown,
+  Icon,
   Pagination,
   Paragraph,
-  PillBadge,
-  ScoreBadge,
   Search,
 } from "@developer-overheid-nl/don-register-components";
 import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
   DonOverview,
-  // getPagination,
+  getPagination,
   getRouting,
-  // parseHeaders,
+  parseHeaders,
 } from "@developer-overheid-nl/don-register-layouts";
-import { getPagination, parseHeaders } from "@your_org_name/components";
-import { t } from "i18next";
+// import { /*getPagination, parseHeaders*/ } from "@your_org_name/components";
+import { parseTags, parseCategories } from "../../../helpers/facetFilters";
 import createClient from "openapi-fetch";
 import appConfig from "../../../../app.config";
 import { Content as Intro } from "../../../partials/intro.md";
 import type { paths } from "../../../types/api-schema";
+import { FacetFilters } from "@developer-overheid-nl/don-register-components/client";
+import type { FilterData } from "@developer-overheid-nl/don-register-components/client";
 
 const { page = 1 } = Astro.params;
 
 const THINGS_RESOURCE: keyof paths = `/things`;
-// const CATEGORIES_RESOURCE: keyof paths = `/categories`;
+const CATEGORIES_RESOURCE: keyof paths = `/categories`;
+const TAGS_RESOURCE: keyof paths = `/tags`;
 const SEARCH_QUERY_KEY = "q";
 
 const routingObj = getRouting(
@@ -56,13 +53,14 @@ const client = createClient<paths>({
 const {
   data,
   error,
-  response: { headers },
+  response: { url, headers },
 } = await client
   .GET(THINGS_RESOURCE, {
     params: {
       query: {
         _page: Number(page),
-        ...routingObj.query,
+        _limit: 10,
+        ...routingObj.queryObject,
       },
     },
   })
@@ -71,12 +69,36 @@ const {
     return { data: null, error, response: new Response() };
   });
 
-const paginationObj = parseHeaders(headers);
-const pagination = getPagination(paginationObj, routingObj.url);
+const {
+  data: categoriesData,
+  // error: categoriesError,
+  // response: categoriesResponse,
+} = await client
+  .GET(CATEGORIES_RESOURCE)
+  .catch((error) => {
+    console.error(error);
+    return { data: null, error, response: new Response() };
+  });
 
-// console.log(t('pages.overview'), t('components.prev'));
+const {
+  data: tagsData,
+  // error: tagsError,
+  // response: tagsResponse,
+} = await client
+  .GET(TAGS_RESOURCE)
+  .catch((error) => {
+    console.error(error);
+    return { data: null, error, response: new Response() };
+  });
 
-// console.log(i18n)
+const paginationObj = parseHeaders(headers, {page: "_page", perPage: "_limit"});
+const pagination = getPagination(paginationObj, routingObj.url, 2);
+
+const facetFilters: FilterData[] = [
+  parseCategories(categoriesData),
+  parseTags(tagsData), // TODO: fix oas
+];
+
 const { i18n: i18nApp } = appConfig;
 i18n.addResourceBundle(
   i18n.language,
@@ -85,8 +107,7 @@ i18n.addResourceBundle(
   true,
   true,
 );
-
-// console.log('Fetched data for page', {page, data, error, headers, paginationObj, pagination});
+const t = i18n.t;
 
 const items = error ? null : data;
 ---
@@ -94,6 +115,19 @@ const items = error ? null : data;
 <DonOverview appConfig={appConfig} titlePage={t('pages.overview')}>
   <Article className="markdown-content utrecht-html" slot="header"><Intro /></Article>
   <Search slot="search" searchUrl={new URL(`/dingen/zoeken`, routingObj?.url).toString()} searchKey={SEARCH_QUERY_KEY} searchTerm={routingObj.query[SEARCH_QUERY_KEY]}></Search>
+
+  <pre>{JSON.stringify(pagination, null, 2)}</pre>
+  <form slot="filters" method="get" action={new URL(`/dingen`, routingObj?.url).toString()}>
+    <FacetFilters filters={facetFilters} title={t("components.filters-title")} />
+    <Button
+      appearance="primary-action-button"
+      type="submit"
+      title="Enter ↵"
+    >
+      {t("components.filter-button-label")}
+      <Icon name="trechter" slot="icon" width="1.5rem" height="1.5rem" />
+    </Button>
+  </form>
 
   { error && (
     <Alert type="error">{(error as unknown as any).message || (error as unknown as any).error_msg || t('components.fuzz-error')}</Alert>

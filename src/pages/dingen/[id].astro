@@ -28,7 +28,6 @@ import {
   DonBasic,
   DonDetail,
 } from "@developer-overheid-nl/don-register-layouts";
-import { t } from "i18next";
 import createClient from "openapi-fetch";
 import appConfig from "../../../app.config";
 import type { paths } from "../../types/api-schema";
@@ -61,6 +60,7 @@ i18n.addResourceBundle(
   true,
 );
 i18n.addResources(i18n.language, "translation", i18nPage);
+const t = i18n.t;
 
 // console.log(i18n.getResourceBundle(i18n.language, "translation").pages, t('pages.aside-landmark'));
 
