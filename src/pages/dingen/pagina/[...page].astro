@@ -5,17 +5,21 @@ import { API_ENDPOINT, API_URL } from "astro:env/server";
 import {
   Alert,
   Article,
+  BadgeList,
   Button,
   CardAsLink,
   CardsList,
   CardsListItem,
   DataBadgeLink,
+  type FilterData,
+  getSelectedFiltersMap,
   HeadingGroup,
   Icon,
   Pagination,
   Paragraph,
   Search,
 } from "@developer-overheid-nl/don-register-components";
+import { FacetFilters } from "@developer-overheid-nl/don-register-components/client";
 import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
   DonOverview,
@@ -23,22 +27,26 @@ import {
   getRouting,
   parseHeaders,
 } from "@developer-overheid-nl/don-register-layouts";
-// import { /*getPagination, parseHeaders*/ } from "@your_org_name/components";
-import { parseTags, parseCategories } from "../../../helpers/facetFilters";
 import createClient from "openapi-fetch";
 import appConfig from "../../../../app.config";
+// import { /*getPagination, parseHeaders*/ } from "@your_org_name/components";
+import {
+  parseCategories,
+  parseTags,
+  removeEmptyValues,
+} from "../../../helpers/facetFilters";
 import { Content as Intro } from "../../../partials/intro.md";
 import type { paths } from "../../../types/api-schema";
-import { FacetFilters } from "@developer-overheid-nl/don-register-components/client";
-import type { FilterData } from "@developer-overheid-nl/don-register-components/client";
 
 const { page = 1 } = Astro.params;
 
+/** API resources */
 const THINGS_RESOURCE: keyof paths = `/things`;
 const CATEGORIES_RESOURCE: keyof paths = `/categories`;
 const TAGS_RESOURCE: keyof paths = `/tags`;
 const SEARCH_QUERY_KEY = "q";
 
+/** Dit object wordt gebruikt op verschillende plekken zoals url-opbouw, query uitlezen etc. */
 const routingObj = getRouting(
   Astro.url,
   Astro.originPathname,
@@ -46,22 +54,25 @@ const routingObj = getRouting(
   Astro.params,
 );
 
+/** Fetch client met oas-typing */
 const client = createClient<paths>({
   baseUrl: `${API_URL}/${API_ENDPOINT}`,
 });
 
+/** Get the things from the API for the overview */
 const {
   data,
   error,
-  response: { url, headers },
+  response: { headers },
 } = await client
   .GET(THINGS_RESOURCE, {
     params: {
-      query: {
+      /* removeEmptyValues is needed because the API will return an empty result for a empty query parameter, instead of ignoring it */
+      query: removeEmptyValues({
         _page: Number(page),
         _limit: 10,
         ...routingObj.queryObject,
-      },
+      }),
     },
   })
   .catch((error) => {
@@ -69,36 +80,46 @@ const {
     return { data: null, error, response: new Response() };
   });
 
+/** Get data for the filters */
 const {
   data: categoriesData,
   // error: categoriesError,
   // response: categoriesResponse,
-} = await client
-  .GET(CATEGORIES_RESOURCE)
-  .catch((error) => {
-    console.error(error);
-    return { data: null, error, response: new Response() };
-  });
-
+} = await client.GET(CATEGORIES_RESOURCE).catch((error) => {
+  console.error(error);
+  return { data: null, error, response: new Response() };
+});
 const {
   data: tagsData,
   // error: tagsError,
   // response: tagsResponse,
-} = await client
-  .GET(TAGS_RESOURCE)
-  .catch((error) => {
-    console.error(error);
-    return { data: null, error, response: new Response() };
-  });
-
-const paginationObj = parseHeaders(headers, {page: "_page", perPage: "_limit"});
-const pagination = getPagination(paginationObj, routingObj.url, 2);
-
+} = await client.GET(TAGS_RESOURCE).catch((error) => {
+  console.error(error);
+  return { data: null, error, response: new Response() };
+});
 const facetFilters: FilterData[] = [
-  parseCategories(categoriesData),
-  parseTags(tagsData), // TODO: fix oas
+  parseCategories(
+    categoriesData,
+    routingObj.queryObject,
+  ) as unknown as FilterData,
+  // @ts-expect-error TODO: fix oas
+  parseTags(tagsData, routingObj.queryObject) as unknown as FilterData,
 ];
 
+/** Selected filters map for filter badges */
+const selectedFiltersMap = getSelectedFiltersMap(
+  facetFilters as unknown as FilterData[],
+  true,
+);
+
+/** Build pagination object and props */
+const paginationObj = parseHeaders(headers, {
+  page: "_page",
+  perPage: "_limit",
+});
+const pagination = getPagination(paginationObj, routingObj.url, 2);
+
+/** i18n; op dit moment 1 taal: nl */
 const { i18n: i18nApp } = appConfig;
 i18n.addResourceBundle(
   i18n.language,
@@ -114,9 +135,8 @@ const items = error ? null : data;
 
 <DonOverview appConfig={appConfig} titlePage={t('pages.overview')}>
   <Article className="markdown-content utrecht-html" slot="header"><Intro /></Article>
-  <Search slot="search" searchUrl={new URL(`/dingen/zoeken`, routingObj?.url).toString()} searchKey={SEARCH_QUERY_KEY} searchTerm={routingObj.query[SEARCH_QUERY_KEY]}></Search>
 
-  <pre>{JSON.stringify(pagination, null, 2)}</pre>
+  <Search slot="search" searchUrl={new URL(`/dingen/zoeken`, routingObj?.url).toString()} searchKey={SEARCH_QUERY_KEY} searchTerm={routingObj.query[SEARCH_QUERY_KEY]}></Search>
   <form slot="filters" method="get" action={new URL(`/dingen`, routingObj?.url).toString()}>
     <FacetFilters filters={facetFilters} title={t("components.filters-title")} />
     <Button
@@ -128,6 +148,37 @@ const items = error ? null : data;
       <Icon name="trechter" slot="icon" width="1.5rem" height="1.5rem" />
     </Button>
   </form>
+
+  <BadgeList table role="menu" aria-label={t('components.current-filters')}>
+    {
+      [...selectedFiltersMap].map(([[key, keyLabel], filter]) => (
+        // biome-ignore lint/a11y/useSemanticElements: fieldset would not be correct
+        <li role="group" aria-labelledby={key}>
+          <small class="label" id={key}>{keyLabel}:</small>
+          {filter.map(([filterValue, filterLabel]) => (
+            <DataBadgeLink
+              appearance="subtle"
+              helperText={t("components.remove-filter")}
+              href={new URL(
+                `?${new URLSearchParams(
+                  [...Array.from(routingObj.url.searchParams)].filter(
+                    ([k, v]) => {
+                      return !(k === key && v === filterValue);
+                    },
+                  ),
+                )}`,
+                routingObj.url,
+              ).toString()}
+              role="menuitem"
+            >
+              {filterLabel}
+              <Icon slot="icon" name="kruis-inline" />
+            </DataBadgeLink>
+          ))}
+        </li>
+      ))
+    }
+  </BadgeList>
 
   { error && (
     <Alert type="error">{(error as unknown as any).message || (error as unknown as any).error_msg || t('components.fuzz-error')}</Alert>
@@ -161,8 +212,8 @@ const items = error ? null : data;
   ( 
     <Alert type="warning">{t('components.no-items-found')}</Alert> 
   )}
-  <Pagination slot="pagination" {...pagination} />
 
+  <Pagination slot="pagination" {...pagination} />
 </DonOverview>
 
 <style>

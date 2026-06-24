@@ -4,6 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@utrecht/button-group-css': 2.0.1
+  react: 19.2.3
+  react-dom: 19.2.3
+  '@ungap/structured-clone': 1.3.1
+
 importers:
 
   .:
@@ -13,13 +19,13 @@ importers:
         version: 5.0.7(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@developer-overheid-nl/don-register-components':
         specifier: latest
-        version: 1.3.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 1.3.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@developer-overheid-nl/don-register-layouts':
         specifier: latest
-        version: 1.2.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/parse-link-header@2.0.3)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 1.2.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/parse-link-header@2.0.3)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@developer-overheid-nl/don-register-locales':
         specifier: latest
-        version: 1.2.0(typescript@5.9.3)
+        version: 1.2.1(typescript@5.9.3)
       '@developer-overheid-nl/proprietary':
         specifier: npm:@developer-overheid-nl/proprietary-example@*
         version: '@developer-overheid-nl/proprietary-example@1.1.0'
@@ -82,15 +88,15 @@ packages:
   '@amsterdam/design-system-react-icons@1.0.0':
     resolution: {integrity: sha512-rgY7haz069mYWPFJaXqsOFFqZQt+1sMOR9WpxybJB0SmAXevlkdEY5X12CtCCzbeBtzRXgCJxTouYjl+5dZblw==}
     peerDependencies:
-      react: 16 - 19
-      react-dom: 16 - 19
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@amsterdam/design-system-react@1.0.0':
     resolution: {integrity: sha512-U2daO1GcYC+nkd4xhpBMFDSTuPLgvaVeQoHZQ1Xf/TwdbXkWNhnAwT55ml74EH75C+Sf7gxpaQu0pWYsT45htw==}
     peerDependencies:
       '@amsterdam/design-system-css': 1.0.0
-      react: 16 - 19
-      react-dom: 16 - 19
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@amsterdam/design-system-tokens@1.0.1':
     resolution: {integrity: sha512-IPBs09ekJQF6ADYgMNp9rpgbKQTAqbug/HQDlIKJjRu3VWLPFX7X+MBFSsIXZYnkUZJtrOGpisRBYBC/WTZ+HA==}
@@ -114,8 +120,8 @@ packages:
     peerDependencies:
       '@types/react': ^17.0.50 || ^18.0.21 || ^19.0.0
       '@types/react-dom': ^17.0.17 || ^18.0.6 || ^19.0.0
-      react: ^17.0.2 || ^18.0.0 || ^19.0.0
-      react-dom: ^17.0.2 || ^18.0.0 || ^19.0.0
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@astrojs/telemetry@3.3.2':
     resolution: {integrity: sha512-j8DNruA8ors99Al39RYZPJK4DC1bKkoNm93mAMuBhY9TCNC4R8n1q7ovFnJ5qhGh5Lsh7pa1gpQVpYpsJPeTHQ==}
@@ -332,16 +338,16 @@ packages:
     resolution: {integrity: sha512-zccHj2z2oCCO4yrDiRSlFOxWerGqRiysP7a5jPK6uoI9URKAquwY42Dd/iUP8JWHxEzdRe4TlbvZCo8z1/mhrw==}
     engines: {node: '>= 20.12.0'}
 
-  '@developer-overheid-nl/don-register-components@1.3.0':
-    resolution: {integrity: sha512-Zl/cGNkSvpqf1eV2PS8ksHe8CXjphB8d1XT/v/CLXJIKLZVEx+Q148gZQvGyHLqdL9PUTw6QALZDXvF4S2RSuQ==}
+  '@developer-overheid-nl/don-register-components@1.3.1':
+    resolution: {integrity: sha512-8Fw7aMQmnnuIfCWVoxaAMt9e59KxtEWcwRyO7kePwJOvo8JItV+GNs5USX4MXmrF0h4BAOCdGob4kFvJOqDWYw==}
     peerDependencies:
       '@types/react': '>=19.2 <19.3'
       '@types/react-dom': '>=19.2 <19.3'
       react: 19.2.3
       react-dom: 19.2.3
 
-  '@developer-overheid-nl/don-register-layouts@1.2.0':
-    resolution: {integrity: sha512-1vZbk06KlV5p7ueWzfEUh5mI12bNEoBK/2oyHn5g1b4LSCfgAdeyx0uwT0xb4YypfZgqr2ccoAtLsGLkN8InVQ==}
+  '@developer-overheid-nl/don-register-layouts@1.2.1':
+    resolution: {integrity: sha512-RzB7x7sVaFvKTDgpLyFEBKTUl4kzml/w3aKDJnXcM8PIRCNK6EgTCU1HbHlVN+FmSv03oiy5SHu5ysMndHvrmA==}
     peerDependencies:
       '@types/parse-link-header': ^2.0.3
       '@types/react': '>=19.2 <19.3'
@@ -349,8 +355,8 @@ packages:
       react: 19.2.3
       react-dom: 19.2.3
 
-  '@developer-overheid-nl/don-register-locales@1.2.0':
-    resolution: {integrity: sha512-A3xhadPRhCk7Lld72sWoE5Y8nFMWYSMdPsxHL7n/iWbHACG5fUkKsw+EdVG7hGl69plJoVBIAcZ92e8u0mhBcQ==}
+  '@developer-overheid-nl/don-register-locales@1.2.1':
+    resolution: {integrity: sha512-BmVILjz+ooLqQtLNdHJlSoXsDrZGhW+j/21R0bLHQHWewcuAZQxhIahCP5Wy5fK5ugvdlMfrPvlBU8UoghvGHw==}
 
   '@developer-overheid-nl/proprietary-example@1.1.0':
     resolution: {integrity: sha512-TIoChaV7JEgfV/1mUY0pG4F8ycFYlai3UD3QtEL4K40rd6NYbwPzHRJPLpx4NzRTE5G/Y6viK8en6MhPiUqY8w==}
@@ -695,7 +701,7 @@ packages:
     resolution: {integrity: sha512-l0seBlSTN1XOSPdssQXBluYMAur6wp2ZjXu7Sa+KbN94y3vpvDzHjVUibRWBINUBSIOOcoGML0mvMq50G2afig==}
     peerDependencies:
       '@babel/runtime': ^7
-      react: ^18
+      react: 19.2.3
 
   '@nl-design-system-candidate/number-badge-css@1.1.2':
     resolution: {integrity: sha512-4H/8PrY34mViCKsxS+4imDxeaDWsB8/vmb3KVzcuNqNfM9v6j0BJRxTN6AyennpIR4fWtEQQLuvG6UeJ3MCM9w==}
@@ -710,7 +716,7 @@ packages:
     resolution: {integrity: sha512-cDfqXIAWtLT5YHjk2mraiHYj+CpaooztqFwTYNzHef7lAo0TK31O9X4QWMkhcqeNrv0ICVIggFrCEXqa2StT2Q==}
     peerDependencies:
       '@babel/runtime': ^7
-      react: ^18
+      react: 19.2.3
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -731,8 +737,8 @@ packages:
     resolution: {integrity: sha512-g+Jep6pFq5QvhIOOicELVK5oMqsXH6g4F6xt6CXfoKymq21DFivz0ADNZdsbUsd/ZrtUQFib0Efk9DKo5Q8udA==}
     engines: {node: '>=18'}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@piwikpro/tracking-base-library@1.7.0':
     resolution: {integrity: sha512-0u5YTcYO2As9T6ZFuJn0da6VYWz0sVYFFujkwiD8fz0o+Jjvl8r8Fk7rM2/ifLs03bqBOYe8MZRCjDKHWQzaiQ==}
@@ -754,8 +760,8 @@ packages:
   '@rijkshuisstijl-community/components-react@11.0.0':
     resolution: {integrity: sha512-t+iRFWVhuemsJo4EBB9+T31ct9/6U6lFfoRrllvt0wiVkBAr5Sin2ADUy6mNz/vckj+2W99H2T60Jn7wx9hyNA==}
     peerDependencies:
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@rijkshuisstijl-community/design-tokens@11.0.0':
     resolution: {integrity: sha512-tYlzF+FCHEHVy80W89HRBU0UVlgqsUp8IwdXT9BwiiQvvLDkZN5d2ZRA7UrMB0X4NXmp9zfcsSLG9Zw8b/Ev7w==}
@@ -1009,8 +1015,8 @@ packages:
     resolution: {integrity: sha512-KPry2WbxX/gEHBrsb5FmfrPyY2aFiYUgi6IUmICNoAmVovevpAtTDX+mGEyMzSyfJo4v07JUB+gRVD9mLd74Lg==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/alert-css@2.4.0':
     resolution: {integrity: sha512-2vrm2Y8yNIPu1VNmEGP7BJkxEFaSPobQ+hcPkQs2TJiPybzX+ut7ZCcm3KaxmE6LSVjIOLSbLXe2YW/fP2g/Rw==}
@@ -1114,13 +1120,6 @@ packages:
   '@utrecht/button-css@3.0.1':
     resolution: {integrity: sha512-yHJazkFSA99H4IKCaKLvq9pptZ9oZBeAzx1l01JQwt3x12aoZ21M5pRRaTP6V7otjfjcvz/A4sRRrROZJJ3wZw==}
 
-  '@utrecht/button-group-css@1.5.0':
-    resolution: {integrity: sha512-8HGQ+CPDoxFM7n+ArsCixFEpw0Uykf4YxLc18L3tE5yw2+pBdrLVieh+wBghg2QtfsQJs5tpLZbw76wyaVENmg==}
-    deprecated: Deprecated. Replaced by @utrecht/action-group-css.
-
-  '@utrecht/button-group-css@2.0.0':
-    resolution: {integrity: sha512-s6VtfphxURhiSnXUoTljhlJDoTZB1z/bqAAtQ6uqhzpKMiJ3B9OohCbNptBHATwbjHQlHSpr8m2grHK7a0W+cA==}
-
   '@utrecht/button-group-css@2.0.1':
     resolution: {integrity: sha512-Zby6G9b1KX6aKECBobzVeVuNcvsknpwUwCVZXN7gzxLzNpJXwPC92XYia0mDIhxUcq8rKCQF+ABzZtxeZKqx9A==}
 
@@ -1128,8 +1127,8 @@ packages:
     resolution: {integrity: sha512-atDWFb16Yk0SEyQ6wpBxeHuHgAUF8a3nyR8+zqFzrm08ZD+Tr5qzD1l0eoQDy9Y7LWtT/gy0aAeDAr+div9aXQ==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/button-link-css@1.3.1':
     resolution: {integrity: sha512-jatHsTpTO25Jy3BWPNlcgiyZ9S0nRdu9CGz7E+qucgcmzAI99BN+vDGzrhRj+HS/UcgTP3TgTggjzcBx8q+Q2A==}
@@ -1144,8 +1143,8 @@ packages:
     resolution: {integrity: sha512-tFNbq6W/HJ1BmHQaCJcmiol9iehHKDtBBj8Lh+yXjlNMt5ovpfltcUd0Qc74lsD7lbjFomWHulmQg25RqBGfAg==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/calendar-css@1.4.1':
     resolution: {integrity: sha512-6syL8tX3TbJxWJGOR2xeNrssIHjmoDuif6hz4V4JzV666pxd4akWqTnJ3XSgxt8WXAwglMeJnB/ynSQDGF4wog==}
@@ -1160,8 +1159,8 @@ packages:
     resolution: {integrity: sha512-v3Qyiu9sQBBAbmfRQfqyWHFhm3DbXG7GeWoCZAr0OM3pYUWRap9UEoKlhjuM1SXd7SCw481JXz7nCr1dQ0CDgw==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/card-css@1.0.0':
     resolution: {integrity: sha512-8mInljwxqW56e2G/5bD6/MfNW1aJEPCR6F/u7O3QuHZZV5ApyeRy6DBnTDDLN0wg+ks3yixB1F30UgiiC2Kc8Q==}
@@ -1170,8 +1169,8 @@ packages:
     resolution: {integrity: sha512-PzeMcdpMVjKCZiQ9K+V4Mm6kcXxKTkrPsgD4yYcm9GKI97QkU9wHsl2SUiN32Wsr2Yn8e5r4RMWJ2jlE7FRqcg==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/checkbox-css@1.6.1':
     resolution: {integrity: sha512-P/S3XvYVW+3sgOAub68eZC/Fn8HlJmG9wl5Owky/NyDnRihb811EicdyzEzc8ldpwuxD7n/YNmJLMyj5pRL5NA==}
@@ -1186,8 +1185,8 @@ packages:
     resolution: {integrity: sha512-0tFCpi1V4pA65A+nEaZ1WnOwkZZxBa28Pkqimc3WFiZzGC8giLVVUd0A9Hc9KpWhThCaEo8me5w4P3cJNDotaw==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/code-block-css@1.5.1':
     resolution: {integrity: sha512-kE42aOvgcqrVqE6Mbh+qhAwKAMSMDaHrLcgjfwPKNc1wGlDkIgilPnxg4kQtNibBu6Anf6HGLj9vq6cQMCsTOQ==}
@@ -1238,8 +1237,8 @@ packages:
     resolution: {integrity: sha512-PICGkdJbUQmdkjex4ce+H6P+N7wey3iv1i4fCHW7aDpKOpI9l37JpdH0pvTsfy3hswVP8eGZAYcZDeUWTU2+nA==}
     peerDependencies:
       '@babel/runtime': ^7.23.6
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/component-library-css@8.0.0':
     resolution: {integrity: sha512-DIBNwnwCK9aa2rQth1dzxzsMB2nV52a/P4KVo4euEF9y0pLhcizzwyWAEsql5/FzgAS+Zu8SCElF2UAS1HJ3AA==}
@@ -1252,8 +1251,8 @@ packages:
     peerDependencies:
       '@babel/runtime': ^7.23.6
       date-fns: ^2.30.0
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
       react-vega: ^7.6.0
       vega: ^5.25.0
     peerDependenciesMeta:
@@ -1295,8 +1294,8 @@ packages:
     resolution: {integrity: sha512-Yqi6EUTOoTJSOTr7qv5f5ekxeaLdm/4JKGhvjyovg60d9vMIJH7sUyzLI8NHbmUikXNmvlNwx1a9OnIFnBke0A==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/data-list-css@1.4.1':
     resolution: {integrity: sha512-MK+is1wSfaiT1mW8GKUottDQUbDymV0wJotlPDnaV97uV45xF2lpXyBWzmDLynESCQtQDHgGTVBPZvHzMVlF9g==}
@@ -1353,8 +1352,8 @@ packages:
     resolution: {integrity: sha512-A2kOUzXFB2FX0RlUp+U+rqhDVqgHGkSgPham6Mtbe2RC5pDZ/pWYYVtgPMEtsL6FthteiHZkYK+8r03sCIOVzw==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/figure-css@1.5.1':
     resolution: {integrity: sha512-KzkIIyGo3wAYXFkDeBV+S2m6InKqPLUpVy8EjBPRTB8WexiLfDKpYf1gAVhgbL+236fB30yWLkzukGO/AAUFBw==}
@@ -1378,8 +1377,8 @@ packages:
     resolution: {integrity: sha512-TNPEcGUV9Aj5aq+4KWESBuRp2QbuNrTF0smsw7B3JdvoLuqVMgwQSofbWygJiVYaS2vYAUyxplVdNrNcLQhmmw==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/form-field-css@1.5.1':
     resolution: {integrity: sha512-EILCtMcMk3LgTT5pUjna0vKA5S77Av1+fgqgfApEWU7y0wcC8UcYdD7Ujl3goJShhO02Fo7AYM3befJQgYBtuQ==}
@@ -1403,8 +1402,8 @@ packages:
     resolution: {integrity: sha512-DteVrWF+qjjbt5CWuynZc2mDb0h9cmDIDra3H46xyfgDPDf3hYHUu6XVid7hfHOUj9KrhN0oQMzc3h2jFZ192w==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/form-field-error-message-css@1.5.1':
     resolution: {integrity: sha512-YuAaTsvxC4fWzIflFmnE1wvrDxXnDvtPbomifzy7fMUjXAHSE+I8XRfnMoibGZjRzz6NyBtitrwerai2nUTBww==}
@@ -1419,15 +1418,15 @@ packages:
     resolution: {integrity: sha512-d+YZOBh4CeunSHPst1tM6bk0BN243wmumcI1bfW+lVIiqi2SQvifSiRsfcC4U2njva4WZXZ4yrQsv39YfO2M6g==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/form-field-react@1.0.8':
     resolution: {integrity: sha512-KLP6o9KYp1qmVQXP5ZAD6WHt8QUiHi8LcI9u27f8i8fmK0ndIEOKZyAz6Wlfpq2zwNnpzoq1EMzxKDd8WZZ9rQ==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/form-fieldset-css@1.5.1':
     resolution: {integrity: sha512-ORVxcAXSbPLr0dLuj26XhKY+3/YSdUSjj5r7V8cTYXbh32KJwaoAOrAREFo0Jm1i8vJpwxAwsptb7o9Lmhpw8Q==}
@@ -1451,8 +1450,8 @@ packages:
     resolution: {integrity: sha512-rq0f67e0nIANgoxhFzqoPM9udtSdo7qWxEydtuleUNL58MrkUOEe8peB1PPwvnw+6NaNxjwEHj607P4H1Zf2Sg==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/form-toggle-css@1.5.1':
     resolution: {integrity: sha512-WV8sXe/Jt4Ol/0ynjbFkqdMbDQQBY7JBmEHPQJJkoRmfS9SU9EgPbGcZjH2e8++lumXQiKxc1WddWcnJAT77Eg==}
@@ -1605,8 +1604,8 @@ packages:
     resolution: {integrity: sha512-F4wVXLe3nwJXW5HwvZtvFt0BUrwYiDEPaiQt3JK7iJ6XHaeJrJxqAc6gs7KWdEd9/OU40FsCXOz9XqZdcK5c/A==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/link-social-css@1.4.1':
     resolution: {integrity: sha512-j+I2mncqYN7ftHXm4+qC8w/JP3Nj/qJNpJ2KknCV5pAY7x4EU1IU3IlgeTiyfRsyN3S+QN8nYsNAwGtu/Re3/Q==}
@@ -1639,8 +1638,8 @@ packages:
     resolution: {integrity: sha512-4zSCUkW994UBBvYBz3zrYlMqVCtrEf/Vi26U1OAfHw14v3WgFxIaFDMWQiXPejyZUA9bJB1DMH/1xbbXEq6ICA==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/logo-button-css@1.4.1':
     resolution: {integrity: sha512-KXR282BYz7zkTFIidR5qX8UhVWrcptJgN59/eYElPlnxreS7ry49/+vWqy0OVobD2TddTjENH9QZOn1JI6aYqQ==}
@@ -1736,8 +1735,8 @@ packages:
     resolution: {integrity: sha512-dr5o9vFgadW5vVJObTePdYW55hTp2QBMGzuyZOXXXtfN4SQ9wETi1+W48pmyib6OY1vdi2WrNTjcaZ9Ww+PdMA==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/ordered-list-css@2.0.0':
     resolution: {integrity: sha512-hNGGSb5N0VnBtxQIuBaqNeS2p380rMecbGgH0olWgGGEaYvITbhHgXM3Xg+5O2fDsMCT0BQ2EOyML3DiOcomcQ==}
@@ -1845,8 +1844,8 @@ packages:
     resolution: {integrity: sha512-H3vlcy2YylZwvjowuVa+oDg8qCTLC6kAYVQ2pRLfgfMl0hLgvv+eM0ShpY9YeCSt7mBeTQw1KoD5aHQJiWydEw==}
     peerDependencies:
       '@babel/runtime': '*'
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/rich-text-css@1.4.0':
     resolution: {integrity: sha512-F+gWm4tJ/RDS3cTZGJBmPGzyTZQ3oGWOgcgxrS5LDEv0FpJ+om2TtZ7hPoWXxJ7qRjJ26qaUHr6TqugrsBiWnw==}
@@ -1969,8 +1968,8 @@ packages:
     resolution: {integrity: sha512-Aku/2YMcOSx5jsUBuU7QKzrOiC6JkGWK8CfLyP1xkDmdqL7+n1x/EznN4mrcm/N7jPqQJTfLFxX1dJg8O09nkQ==}
     peerDependencies:
       '@babel/runtime': ^7.23.6
-      react: '18'
-      react-dom: '18'
+      react: 19.2.3
+      react-dom: 19.2.3
 
   '@utrecht/tooltip-css@1.0.0':
     resolution: {integrity: sha512-/VSySBP/JJroiQ/ncGDSHhE8S/DisW/nsq8f1KXkYj/Yx+xkpQP2wItHoEBsv51/+kkebOQ012wc/bXmBJqNcQ==}
@@ -2443,14 +2442,6 @@ packages:
   human-id@4.2.0:
     resolution: {integrity: sha512-K3GbkIWqyvvlpfhBPlbEvD97TtqBpAYA4kt+cn2lD2x2HuohzZCibcA2nOlnJT6exqvJLggoB5nv2dNf192nEA==}
     hasBin: true
-
-  i18next@25.8.4:
-    resolution: {integrity: sha512-a9A0MnUjKvzjEN/26ZY1okpra9kA8MEwzYEz1BNm+IyxUKPRH6ihf0p7vj8YvULwZHKHl3zkJ6KOt4hewxBecQ==}
-    peerDependencies:
-      typescript: ^5
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   i18next@26.3.1:
     resolution: {integrity: sha512-txQqd5EULsqEh9OJqRH15aCaOuy/nLJyhw5EHCSKLKJE1aBbb3Zve2+uQIxgWhPm1QqUQoWyQBm2kfmmIrzkcQ==}
@@ -2946,16 +2937,16 @@ packages:
   react-dom@19.2.3:
     resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
     peerDependencies:
-      react: ^19.2.3
+      react: 19.2.3
 
-  react-i18next@16.5.4:
-    resolution: {integrity: sha512-6yj+dcfMncEC21QPhOTsW8mOSO+pzFmT6uvU7XXdvM/Cp38zJkmTeMeKmTrmCMD5ToT79FmiE/mRWiYWcJYW4g==}
+  react-i18next@17.0.8:
+    resolution: {integrity: sha512-0ooKbGLU8JXhe1zwpQUWIeXSgLPOfwJmgheWRIUpcoA0CpyabpGhayjdG+/eA5esC1AQ8h2jWpXjJfzQzeDOCw==}
     peerDependencies:
-      i18next: '>= 25.6.2'
-      react: '>= 16.8.0'
+      i18next: '>= 26.2.0'
+      react: 19.2.3
       react-dom: '*'
       react-native: '*'
-      typescript: ^5
+      typescript: ^5 || ^6
     peerDependenciesMeta:
       react-dom:
         optional: true
@@ -2968,7 +2959,7 @@ packages:
     resolution: {integrity: sha512-qKxVopLT/TyA6BX3Ue5NwabOsAzm0Q7kAPwq6L+wWDwisYs7R8vZ0nRXqq6rkueboxpkjvLGU9fWifiX/ZZFxQ==}
     peerDependencies:
       '@types/react': '>=18'
-      react: '>=18'
+      react: 19.2.3
 
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
@@ -3343,7 +3334,7 @@ packages:
   use-sync-external-store@1.6.0:
     resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react: 19.2.3
 
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
@@ -3856,9 +3847,9 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@developer-overheid-nl/don-register-components@1.3.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@developer-overheid-nl/don-register-components@1.3.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
-      '@developer-overheid-nl/don-register-locales': 1.2.0(typescript@5.9.3)
+      '@developer-overheid-nl/don-register-locales': 1.2.1(typescript@5.9.3)
       '@piwikpro/react-piwik-pro': 2.5.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@rijkshuisstijl-community/components-css': 12.0.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1)
       '@rijkshuisstijl-community/components-react': 11.0.0(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@babel/runtime@7.29.7)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3867,11 +3858,11 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.1.11(@types/react@19.2.17)
       clsx: 2.1.1
-      i18next: 25.8.4(typescript@5.9.3)
+      i18next: 26.3.1(typescript@5.9.3)
       parse-link-header: 2.0.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
-      react-i18next: 16.5.4(i18next@25.8.4(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      react-i18next: 17.0.8(i18next@26.3.1(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       react-markdown: 10.1.0(@types/react@19.2.17)(react@19.2.3)
       remark-behead: 3.1.0
     transitivePeerDependencies:
@@ -3886,10 +3877,10 @@ snapshots:
       - typescript
       - vega
 
-  '@developer-overheid-nl/don-register-layouts@1.2.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/parse-link-header@2.0.3)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@developer-overheid-nl/don-register-layouts@1.2.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/parse-link-header@2.0.3)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
-      '@developer-overheid-nl/don-register-components': 1.3.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
-      '@developer-overheid-nl/don-register-locales': 1.2.0(typescript@5.9.3)
+      '@developer-overheid-nl/don-register-components': 1.3.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@amsterdam/design-system-tokens@1.0.1)(@babel/runtime@7.29.7)(@types/react-dom@19.1.11(@types/react@19.2.17))(@types/react@19.2.17)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@developer-overheid-nl/don-register-locales': 1.2.1(typescript@5.9.3)
       '@rijkshuisstijl-community/components-css': 12.0.0(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1)
       '@rijkshuisstijl-community/components-react': 11.0.0(@amsterdam/design-system-css@1.0.1(@amsterdam/design-system-assets@1.0.0)(@amsterdam/design-system-tokens@1.0.1))(@babel/runtime@7.29.7)(date-fns@2.30.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@rijkshuisstijl-community/design-tokens': 11.0.0
@@ -3897,7 +3888,7 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.1.11(@types/react@19.2.17)
       '@utrecht/component-library-css': 9.0.0
-      i18next: 25.8.4(typescript@5.9.3)
+      i18next: 26.3.1(typescript@5.9.3)
       parse-link-header: 2.0.0
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -3913,9 +3904,9 @@ snapshots:
       - supports-color
       - vega
 
-  '@developer-overheid-nl/don-register-locales@1.2.0(typescript@5.9.3)':
+  '@developer-overheid-nl/don-register-locales@1.2.1(typescript@5.9.3)':
     dependencies:
-      i18next: 25.8.4(typescript@5.9.3)
+      i18next: 26.3.1(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
@@ -4566,16 +4557,12 @@ snapshots:
 
   '@utrecht/button-css@3.0.1': {}
 
-  '@utrecht/button-group-css@1.5.0': {}
-
-  '@utrecht/button-group-css@2.0.0': {}
-
   '@utrecht/button-group-css@2.0.1': {}
 
   '@utrecht/button-group-react@1.1.1(@babel/runtime@7.29.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@utrecht/button-group-css': 2.0.0
+      '@utrecht/button-group-css': 2.0.1
       clsx: 2.1.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -4693,7 +4680,7 @@ snapshots:
       '@utrecht/body-css': 1.2.1
       '@utrecht/breadcrumb-nav-css': 1.5.1
       '@utrecht/button-css': 2.3.1
-      '@utrecht/button-group-css': 1.5.0
+      '@utrecht/button-group-css': 2.0.1
       '@utrecht/button-link-css': 1.3.1
       '@utrecht/calendar-css': 1.4.1
       '@utrecht/checkbox-css': 1.6.1
@@ -6116,12 +6103,6 @@ snapshots:
 
   human-id@4.2.0: {}
 
-  i18next@25.8.4(typescript@5.9.3):
-    dependencies:
-      '@babel/runtime': 7.29.7
-    optionalDependencies:
-      typescript: 5.9.3
-
   i18next@26.3.1(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
@@ -6774,11 +6755,11 @@ snapshots:
       react: 19.2.3
       scheduler: 0.27.0
 
-  react-i18next@16.5.4(i18next@25.8.4(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
+  react-i18next@17.0.8(i18next@26.3.1(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.7
       html-parse-stringify: 3.0.1
-      i18next: 25.8.4(typescript@5.9.3)
+      i18next: 26.3.1(typescript@5.9.3)
       react: 19.2.3
       use-sync-external-store: 1.6.0(react@19.2.3)
     optionalDependencies:

@@ -5,23 +5,13 @@ import { API_ENDPOINT, API_URL } from "astro:env/server";
 import {
   Alert,
   AlignBox,
-  Block,
-  CopyButton,
-  DataBadgeLink,
   DataSummary,
   DataSummaryItem,
-  getAppearance,
-  getDate,
   Heading,
   HeadingGroup,
-  Icon,
-  IconBadge,
   Link,
   Markdown,
   Paragraph,
-  PillBadge,
-  ReadOnlyTextInput,
-  ScoreBadge,
 } from "@developer-overheid-nl/don-register-components";
 import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
@@ -33,21 +23,21 @@ import appConfig from "../../../app.config";
 import type { paths } from "../../types/api-schema";
 
 const { id = null } = Astro.params;
+
+/** API resource */
 const THINGS_RESOURCE: keyof paths = `/things/{id}`;
 
+/** Fetch client met oas-typing */
 const client = createClient<paths>({
   baseUrl: `${API_URL}/${API_ENDPOINT}`,
 });
-const {
-  data,
-  error,
-  response: { headers },
-} = await client.GET(THINGS_RESOURCE, {
+const { data, error } = await client.GET(THINGS_RESOURCE, {
   params: {
     path: { id: id ? Number(id) : 0 },
   },
 });
 
+/** i18n; op dit moment 1 taal: nl */
 const { i18n: i18nApp } = appConfig;
 const i18nPage = {
   "pages.aside-landmark": "Meer informatie",
@@ -61,8 +51,6 @@ i18n.addResourceBundle(
 );
 i18n.addResources(i18n.language, "translation", i18nPage);
 const t = i18n.t;
-
-// console.log(i18n.getResourceBundle(i18n.language, "translation").pages, t('pages.aside-landmark'));
 
 const details = error ? null : data;
 ---
@@ -91,6 +79,15 @@ const details = error ? null : data;
       <Heading level={3} className="sr-only">{t(`pages.description`)}</Heading>
       <div class="utrecht-html"><Markdown text={details.description} minHeadingDepth={4} /></div>
     </Fragment>
+    <Fragment slot="meta">
+      <AlignBox align="top-left" wrap gap="small" className="features">
+        {
+          details.tags.map(tag => (
+            <span class="feature-pill">{tag}</span>
+          ))
+        }
+      </AlignBox>
+    </Fragment>
     <Fragment slot="aside">
       <DataSummary appearance="row">
         <DataSummaryItem itemKey="Wikipedia" href={details.wikipedia || undefined} itemValue="">{details.wikipedia || '-'}</DataSummaryItem>
@@ -98,3 +95,18 @@ const details = error ? null : data;
     </Fragment>
   </DonDetail>
 )}
+
+<style>
+  .features {
+    margin-top: 0.5rem;
+    font-size: smaller;
+  }
+  
+  .feature-pill {
+    display: inline-block;
+    padding-block: 2px;
+    padding-inline: 6px;
+    background-color: var(--rhc-color-cool-grey-200);
+    border-radius: 2px;
+  }
+</style>
