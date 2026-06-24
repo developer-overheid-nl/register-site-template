@@ -41,6 +41,7 @@ export const parseTags = (
     key: "tags_like",
     label: "Tags",
     description: "Filter op tags",
+    // @ts-expect-error 
     type: "multi-select" as FilterData["type"],
     options,
   };
@@ -68,6 +69,7 @@ export const parseCategories = (
     key: filterkey,
     label: "Categorieën",
     description: "Filter op categorieën",
+    // @ts-expect-error 
     type: "single-select" as FilterData["type"],
     options,
   };

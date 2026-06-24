@@ -1,0 +1,14 @@
+{
+  "folder-color.pathColors": [
+    {
+      "folderPath": "register-site-template\\packages\\",
+      "color": "foldercolorizer.color_00d7af",
+      "isFolderOnly": true
+    },
+    {
+      "folderPath": "register-site-template\\proprietary\\",
+      "color": "foldercolorizer.color_00d7af",
+      "isFolderOnly": true
+    }
+  ]
+}

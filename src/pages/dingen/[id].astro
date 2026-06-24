@@ -55,7 +55,7 @@ const t = i18n.t;
 const details = error ? null : data;
 ---
 
-{ error && (
+{error && (
   <DonBasic appConfig={appConfig} titlePage="Ding niet gevonden">
     <Alert type="error">{(error as unknown as any).message || (error as unknown as any).detail || t('components.fuzz-error')}</Alert>
     <Paragraph>{t('components.item-not-found-error')}</Paragraph>
