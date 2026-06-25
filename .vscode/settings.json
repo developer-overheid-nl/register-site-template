@@ -10,5 +10,8 @@
       "color": "foldercolorizer.color_00d7af",
       "isFolderOnly": true
     }
-  ]
+  ],
+  "json.schemaDownload.trustedDomains": {
+    "https://unpkg.com/@changesets/": true
+  }
 }
