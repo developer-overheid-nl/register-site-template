@@ -28,7 +28,7 @@ importers:
         version: 1.2.1(typescript@5.9.3)
       '@developer-overheid-nl/proprietary':
         specifier: npm:@developer-overheid-nl/proprietary-example@*
-        version: '@developer-overheid-nl/proprietary-example@1.1.0'
+        version: '@developer-overheid-nl/proprietary-example@1.2.0'
       '@rijkshuisstijl-community/design-tokens':
         specifier: 11.1.0
         version: 11.1.0
@@ -358,8 +358,8 @@ packages:
   '@developer-overheid-nl/don-register-locales@1.2.1':
     resolution: {integrity: sha512-BmVILjz+ooLqQtLNdHJlSoXsDrZGhW+j/21R0bLHQHWewcuAZQxhIahCP5Wy5fK5ugvdlMfrPvlBU8UoghvGHw==}
 
-  '@developer-overheid-nl/proprietary-example@1.1.0':
-    resolution: {integrity: sha512-TIoChaV7JEgfV/1mUY0pG4F8ycFYlai3UD3QtEL4K40rd6NYbwPzHRJPLpx4NzRTE5G/Y6viK8en6MhPiUqY8w==}
+  '@developer-overheid-nl/proprietary-example@1.2.0':
+    resolution: {integrity: sha512-v7kThKWs2XKn29RAiW7+aGbi3UbwfcCENJQL0tMiefc/7gXCAPd7KBxiEMXnkftN+yW/Df5cSl5Krf9TopVhLw==}
 
   '@emnapi/runtime@1.11.1':
     resolution: {integrity: sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==}
@@ -3910,7 +3910,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@developer-overheid-nl/proprietary-example@1.1.0':
+  '@developer-overheid-nl/proprietary-example@1.2.0':
     dependencies:
       '@fontsource/fira-sans': 5.2.7
       react: 19.2.3
