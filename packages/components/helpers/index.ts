@@ -1,1 +1,1 @@
-export * from "./getPagination";
+export * from "./facetFilters";

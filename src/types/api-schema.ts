@@ -108,6 +108,26 @@ export interface paths {
         patch: operations["updateThing"];
         trace?: never;
     };
+    "/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List all tags
+         * @description Retrieve a list of all unique tags used by things
+         */
+        get: operations["getTags"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -119,12 +139,16 @@ export interface components {
             name: string;
             /** @description Detailed description of the category */
             description: string;
+            /** @description Number of items associated with this category */
+            amount?: number;
         };
         CategoryInput: {
             /** @description Name of the category */
             name: string;
             /** @description Detailed description of the category */
             description: string;
+            /** @description Optional number of items in the category. If omitted, it may be computed automatically. */
+            amount?: number;
         };
         Thing: {
             /** @description Unique identifier for the thing */
@@ -135,6 +159,8 @@ export interface components {
             description: string;
             /** @description Category the item belongs to */
             category: string;
+            /** @description Tags associated with the cultural item */
+            tags: string[];
             /**
              * Format: uri
              * @description Optional Wikipedia URL for the item (or null)
@@ -148,6 +174,8 @@ export interface components {
             description: string;
             /** @description Category the item belongs to */
             category: string;
+            /** @description Tags associated with the cultural item */
+            tags: string[];
             /**
              * Format: uri
              * @description Optional Wikipedia URL for the item (or null)
@@ -172,6 +200,8 @@ export interface operations {
                 name?: string;
                 /** @description Filter by description */
                 description?: string;
+                /** @description Filter by the number of items in the category */
+                amount?: number;
                 /** @description Full-text search across all fields */
                 q?: string;
                 /** @description Page number for pagination (default: 1) */
@@ -179,7 +209,7 @@ export interface operations {
                 /** @description Number of items per page (default: 10) */
                 _limit?: number;
                 /** @description Field to sort by */
-                _sort?: "id" | "name" | "description";
+                _sort?: "id" | "name" | "description" | "amount";
                 /** @description Sort order: 'asc' for ascending or 'desc' for descending (default: asc) */
                 _order?: "asc" | "desc";
             };
@@ -327,6 +357,8 @@ export interface operations {
                 description?: string;
                 /** @description Filter by category */
                 category?: string;
+                /** @description Filter by one or more tags */
+                tags?: string;
                 /** @description Filter by Wikipedia URL */
                 wikipedia?: string;
                 /** @description Full-text search across all fields */
@@ -470,6 +502,33 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    getTags: {
+        parameters: {
+            query?: {
+                /** @description Filter tags by name */
+                q?: string;
+                /** @description Page number for pagination (default: 1) */
+                _page?: number;
+                /** @description Number of items per page (default: 10) */
+                _limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
+                };
             };
         };
     };
