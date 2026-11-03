@@ -7,6 +7,12 @@ export default {
   meta: {
     description:
       "Welkom bij het Ding-register. Een starter template voor een register site.",
+    ogImages: {
+      "/": {
+        url: "/social-card.png",
+        alt: "Ding-register: een starter template voor een register site.",
+      },
+    },
   },
   mainSite: {
     name: "Jouw organisatie",
