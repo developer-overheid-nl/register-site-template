@@ -51,7 +51,7 @@ export interface paths {
         head?: never;
         /**
          * Update a category
-         * @description Update a specific category by its ID
+         * @description Partially update a specific category by its ID. Only the fields in the request body are changed.
          */
         patch: operations["updateCategory"];
         trace?: never;
@@ -103,7 +103,7 @@ export interface paths {
         head?: never;
         /**
          * Update a thing
-         * @description Update a specific cultural item by its ID
+         * @description Partially update a specific cultural item by its ID. Only the fields in the request body are changed.
          */
         patch: operations["updateThing"];
         trace?: never;
@@ -117,7 +117,7 @@ export interface paths {
         };
         /**
          * List all tags
-         * @description Retrieve a list of all unique tags used by things
+         * @description Retrieve all unique tags used by things, with the number of things per tag. This is a single object; filtering and pagination parameters are not supported.
          */
         get: operations["getTags"];
         put?: never;
@@ -132,6 +132,19 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** @description Empty JSON object (`{}`) */
+        Empty: Record<string, never>;
+        /**
+         * @description Map of tag name to the number of things with that tag
+         * @example {
+         *       "cheese": 1,
+         *       "food": 5,
+         *       "history": 3
+         *     }
+         */
+        Tags: {
+            [key: string]: number;
+        };
         Category: {
             /** @description Unique identifier for the category */
             id: number;
@@ -147,7 +160,16 @@ export interface components {
             name: string;
             /** @description Detailed description of the category */
             description: string;
-            /** @description Optional number of items in the category. If omitted, it may be computed automatically. */
+            /** @description Optional number of items in the category. Not computed by the server. */
+            amount?: number;
+        };
+        /** @description Partial update of a category; all fields are optional */
+        CategoryUpdate: {
+            /** @description Name of the category */
+            name?: string;
+            /** @description Detailed description of the category */
+            description?: string;
+            /** @description Number of items in the category */
             amount?: number;
         };
         Thing: {
@@ -182,11 +204,50 @@ export interface components {
              */
             wikipedia?: string | null;
         };
+        /** @description Partial update of a thing; all fields are optional */
+        ThingUpdate: {
+            /** @description Name of the cultural item */
+            name?: string;
+            /** @description Description of the cultural item */
+            description?: string;
+            /** @description Category the item belongs to */
+            category?: string;
+            /** @description Tags associated with the cultural item */
+            tags?: string[];
+            /**
+             * Format: uri
+             * @description Optional Wikipedia URL for the item (or null)
+             */
+            wikipedia?: string | null;
+        };
     };
-    responses: never;
-    parameters: never;
+    responses: {
+        /** @description Resource not found */
+        NotFound: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["Empty"];
+            };
+        };
+    };
+    parameters: {
+        /** @description Page number. Enables pagination; when omitted (and `_limit` is omitted too) all items are returned. */
+        Page: number;
+        /** @description Number of items per page. Defaults to 10 when `_page` is given. Without `_page` it limits the result to the first N items. */
+        Limit: number;
+    };
     requestBodies: never;
-    headers: never;
+    headers: {
+        /** @description Total number of items matching the query. Only sent when `_page` or `_limit` is given. */
+        "X-Total-Count": number;
+        /**
+         * @description Pagination links (RFC 8288) with `first`, `prev`, `next` and `last` relations. Only sent when `_page` is given.
+         * @example <http://localhost:3000/things?_page=1&_limit=10>; rel="first", <http://localhost:3000/things?_page=2&_limit=10>; rel="next", <http://localhost:3000/things?_page=3&_limit=10>; rel="last"
+         */
+        Link: string;
+    };
     pathItems: never;
 }
 export type $defs = Record<string, never>;
@@ -204,10 +265,10 @@ export interface operations {
                 amount?: number;
                 /** @description Full-text search across all fields */
                 q?: string;
-                /** @description Page number for pagination (default: 1) */
-                _page?: number;
-                /** @description Number of items per page (default: 10) */
-                _limit?: number;
+                /** @description Page number. Enables pagination; when omitted (and `_limit` is omitted too) all items are returned. */
+                _page?: components["parameters"]["Page"];
+                /** @description Number of items per page. Defaults to 10 when `_page` is given. Without `_page` it limits the result to the first N items. */
+                _limit?: components["parameters"]["Limit"];
                 /** @description Field to sort by */
                 _sort?: "id" | "name" | "description" | "amount";
                 /** @description Sort order: 'asc' for ascending or 'desc' for descending (default: asc) */
@@ -222,6 +283,8 @@ export interface operations {
             /** @description Successful response */
             200: {
                 headers: {
+                    "X-Total-Count": components["headers"]["X-Total-Count"];
+                    Link: components["headers"]["Link"];
                     [name: string]: unknown;
                 };
                 content: {
@@ -275,13 +338,7 @@ export interface operations {
                     "application/json": components["schemas"]["Category"];
                 };
             };
-            /** @description Category not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+            404: components["responses"]["NotFound"];
         };
     };
     deleteCategory: {
@@ -301,15 +358,11 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
-            };
-            /** @description Category not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
+                content: {
+                    "application/json": components["schemas"]["Empty"];
                 };
-                content?: never;
             };
+            404: components["responses"]["NotFound"];
         };
     };
     updateCategory: {
@@ -324,7 +377,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["CategoryInput"];
+                "application/json": components["schemas"]["CategoryUpdate"];
             };
         };
         responses: {
@@ -337,13 +390,7 @@ export interface operations {
                     "application/json": components["schemas"]["Category"];
                 };
             };
-            /** @description Category not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+            404: components["responses"]["NotFound"];
         };
     };
     getThings: {
@@ -357,16 +404,16 @@ export interface operations {
                 description?: string;
                 /** @description Filter by category */
                 category?: string;
-                /** @description Filter by one or more tags */
-                tags?: string;
+                /** @description Filter by tag. Case-insensitive regular expression matched against the tags joined with commas, so it is a substring match (e.g. `art` also matches `smart`) and `^`/`$` anchors do not isolate a single tag. Repeat the parameter to match any of several tags. */
+                tags_like?: string;
                 /** @description Filter by Wikipedia URL */
                 wikipedia?: string;
                 /** @description Full-text search across all fields */
                 q?: string;
-                /** @description Page number for pagination (default: 1) */
-                _page?: number;
-                /** @description Number of items per page (default: 10) */
-                _limit?: number;
+                /** @description Page number. Enables pagination; when omitted (and `_limit` is omitted too) all items are returned. */
+                _page?: components["parameters"]["Page"];
+                /** @description Number of items per page. Defaults to 10 when `_page` is given. Without `_page` it limits the result to the first N items. */
+                _limit?: components["parameters"]["Limit"];
                 /** @description Field to sort by */
                 _sort?: "id" | "name" | "description" | "category" | "wikipedia";
                 /** @description Sort order: 'asc' for ascending or 'desc' for descending (default: asc) */
@@ -381,6 +428,8 @@ export interface operations {
             /** @description Successful response */
             200: {
                 headers: {
+                    "X-Total-Count": components["headers"]["X-Total-Count"];
+                    Link: components["headers"]["Link"];
                     [name: string]: unknown;
                 };
                 content: {
@@ -434,13 +483,7 @@ export interface operations {
                     "application/json": components["schemas"]["Thing"];
                 };
             };
-            /** @description Thing not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+            404: components["responses"]["NotFound"];
         };
     };
     deleteThing: {
@@ -460,15 +503,11 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
-            };
-            /** @description Thing not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
+                content: {
+                    "application/json": components["schemas"]["Empty"];
                 };
-                content?: never;
             };
+            404: components["responses"]["NotFound"];
         };
     };
     updateThing: {
@@ -483,7 +522,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ThingInput"];
+                "application/json": components["schemas"]["ThingUpdate"];
             };
         };
         responses: {
@@ -496,25 +535,12 @@ export interface operations {
                     "application/json": components["schemas"]["Thing"];
                 };
             };
-            /** @description Thing not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+            404: components["responses"]["NotFound"];
         };
     };
     getTags: {
         parameters: {
-            query?: {
-                /** @description Filter tags by name */
-                q?: string;
-                /** @description Page number for pagination (default: 1) */
-                _page?: number;
-                /** @description Number of items per page (default: 10) */
-                _limit?: number;
-            };
+            query?: never;
             header?: never;
             path?: never;
             cookie?: never;
@@ -527,7 +553,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string[];
+                    "application/json": components["schemas"]["Tags"];
                 };
             };
         };

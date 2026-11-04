@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "license": "EUPL-1.2",
   "engines": {
-    "node": ">=22.12.0 <23 || >=24",
+    "node": ">=22.23.4 <23 || >=24",
     "pnpm": ">=10"
   },
   "packageManager": "pnpm@10.27.0",
@@ -19,33 +19,24 @@
     "biome:migrate": "biome migrate --write"
   },
   "dependencies": {
-    "@astrojs/react": "5.0.7",
+    "@astrojs/react": "7.1.2",
     "@developer-overheid-nl/don-register-components": "latest",
     "@developer-overheid-nl/don-register-layouts": "latest",
     "@developer-overheid-nl/don-register-locales": "latest",
     "@developer-overheid-nl/proprietary": "npm:@developer-overheid-nl/proprietary-example@*",
-    "@rijkshuisstijl-community/design-tokens": "11.1.0",
+    "@rijkshuisstijl-community/design-tokens": "11.0.0",
     "@types/react": "19.2.17",
-    "@types/react-dom": "19.1.11",
+    "@types/react-dom": "19.2.7",
     "@your_org_name/components": "workspace:*",
-    "astro": "6.4.7",
-    "i18next": "26.3.1",
+    "astro": "7.4.4",
+    "i18next": "26.5.12",
     "openapi-fetch": "0.17.0",
-    "parse-link-header": "2.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
-    "@changesets/cli": "2.31.0",
+    "@biomejs/biome": "2.5.13",
+    "@changesets/cli": "3.0.3",
     "openapi-typescript": "7.13.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ],
-    "ignoredBuiltDependencies": [
-      "sharp"
-    ]
   }
 }
