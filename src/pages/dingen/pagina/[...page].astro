@@ -101,7 +101,6 @@ const facetFilters: FilterData[] = [
     categoriesData,
     routingObj.queryObject,
   ) as unknown as FilterData,
-  // @ts-expect-error TODO: fix oas
   parseTags(tagsData, routingObj.queryObject) as unknown as FilterData,
 ];
 
