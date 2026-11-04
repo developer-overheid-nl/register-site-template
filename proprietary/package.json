@@ -1,6 +1,6 @@
 {
   "name": "@your_org_name/proprietary",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Proprietary items for register site template",
   "private": "true",
   "main": "index.ts",
