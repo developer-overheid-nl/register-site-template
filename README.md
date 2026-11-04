@@ -102,6 +102,41 @@ Wil je deze template gebruiken? Volg dan de volgende stappen:
 
 Als de demo site draait, kan je aan de slag met het aanpassen. Zet je eigen organisatiegegevens in `app.config.ts`, `package.json` en de `README.md`. Zoek op `@your_org_name`, `YOUR_ORG_NAME` en `Jouw Organisatie` in de codebase en vervang deze door jouw eigen naam.
 
+## De Dingen API lokaal draaien
+
+De demo haalt standaard data op van de [Dingen API](https://github.com/developer-overheid-nl/dingen-api) via `my-json-server.typicode.com` (zie `.env`). Is die niet bereikbaar, of wil je de data aanpassen? Draai de API dan lokaal met [JSON Server](https://github.com/typicode/json-server):
+
+1. Clone de API naast deze repository en start de server:
+
+   ```sh
+   git clone https://github.com/developer-overheid-nl/dingen-api.git
+   cd dingen-api
+   pnpm install
+   pnpm start
+   ```
+
+   De API draait nu op `http://localhost:3000`. Gebruik `pnpm start:ro` als je alleen `GET`-verzoeken wilt toestaan; met `pnpm start` schrijven `POST`, `PATCH` en `DELETE` direct naar `db.json`.
+
+2. Maak in deze repository een bestand `.env.local` aan (dit bestand wordt niet gecommit en overschrijft `.env`):
+
+   ```sh
+   API_URL="http://localhost:3000"
+   API_ENDPOINT="developer-overheid-nl/dingen-api"
+   ```
+
+   `API_ENDPOINT` blijft gelijk aan die in `.env`: de `routes.json` van de API stuurt dat pad door naar de juiste resources.
+
+3. Herstart `pnpm dev`. Env-bestanden worden alleen bij het opstarten ingelezen.
+
+Wil je weer de publieke API gebruiken? Verwijder of hernoem `.env.local` en herstart `pnpm dev`.
+
+Heb je `openapi.json` in de API aangepast? `pnpm ts:oas` leest de OAS van de `main`-branch op GitHub (zie `redocly.yaml`). Genereer de types tot die tijd vanuit de lokale kopie, door het commando in de map `dingen-api` te draaien:
+
+```sh
+cd ../dingen-api
+../register-site-template/node_modules/.bin/openapi-typescript openapi.json -o ../register-site-template/src/types/api-schema.ts
+```
+
 ## (Dev)Dependencies
 
 - Astro: Site build, routing, SSR / SSG

@@ -27,6 +27,41 @@ pnpm changeset         # add a changeset
 pnpm changeset status  # show what will be bumped
 ```
 
+## Running the dingen-api locally
+
+The demo data comes from [dingen-api](https://github.com/developer-overheid-nl/dingen-api), served by `my-json-server.typicode.com` by default (`.env`). When that host is down (it returns 530 at times) or you need to change the data, run the API locally. It is a [JSON Server](https://github.com/typicode/json-server) **0.17.4** setup: the site depends on 0.x behaviour (`_page`/`_limit`, `q`, `tags_like`, `X-Total-Count` and `Link` headers) that JSON Server 1.x removed, so don't upgrade it.
+
+1. Clone it next to this repo and start it:
+
+   ```sh
+   git clone https://github.com/developer-overheid-nl/dingen-api.git ../dingen-api
+   cd ../dingen-api
+   pnpm install
+   pnpm start:ro    # GET only, on localhost:3000
+   ```
+
+   Use `pnpm start:ro` for testing. `pnpm start` allows `POST`/`PATCH`/`DELETE`, which rewrite `db.json` on disk; restore it with `git checkout -- db.json` if that happens by accident.
+2. Create `.env.local` in this repo (gitignored by `.env*.local`, overrides `.env`):
+
+   ```sh
+   API_URL="http://localhost:3000"
+   API_ENDPOINT="developer-overheid-nl/dingen-api"
+   ```
+
+   Keep `API_ENDPOINT` unchanged: `routes.json` in dingen-api maps `/developer-overheid-nl/dingen-api/*` to `/*`.
+3. Restart `pnpm dev`. Astro reads env files only at startup.
+
+To switch back to the public API, remove or rename `.env.local` and restart `pnpm dev`.
+
+**Types:** `pnpm ts:oas` reads `openapi.json` from dingen-api's `main` branch on GitHub (`redocly.yaml`), not the local clone. To generate from an unpushed local spec, run openapi-typescript from inside `../dingen-api`, so it doesn't find this repo's `redocly.yaml`:
+
+```sh
+cd ../dingen-api
+../register-site-template/node_modules/.bin/openapi-typescript openapi.json -o ../register-site-template/src/types/api-schema.ts
+```
+
+After the spec is pushed, `pnpm ts:oas` must produce an identical file.
+
 ## Rules for every alignment
 
 1. **Don't change these lines in `package.json`:**
