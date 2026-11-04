@@ -137,9 +137,9 @@ export interface components {
         /**
          * @description Map of tag name to the number of things with that tag
          * @example {
-         *       "cheese": 1,
-         *       "food": 5,
-         *       "history": 3
+         *       "food": 12,
+         *       "history": 4,
+         *       "savory": 4
          *     }
          */
         Tags: {
@@ -188,6 +188,11 @@ export interface components {
              * @description Optional Wikipedia URL for the item (or null)
              */
             wikipedia?: string | null;
+            /**
+             * @description Filename of the illustration in the `images/webp` folder of the dingen-api repository. Prefix it with `https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/main/images/webp/` for the full URL. Only the filename is stored to keep db.json under the my-json-server size limit.
+             * @example 01-windmills-tulips-canals.webp
+             */
+            image?: string;
         };
         ThingInput: {
             /** @description Name of the cultural item */
@@ -203,6 +208,11 @@ export interface components {
              * @description Optional Wikipedia URL for the item (or null)
              */
             wikipedia?: string | null;
+            /**
+             * @description Filename of the illustration in the `images/webp` folder of the dingen-api repository. Prefix it with `https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/main/images/webp/` for the full URL. Only the filename is stored to keep db.json under the my-json-server size limit.
+             * @example 01-windmills-tulips-canals.webp
+             */
+            image?: string;
         };
         /** @description Partial update of a thing; all fields are optional */
         ThingUpdate: {
@@ -219,6 +229,11 @@ export interface components {
              * @description Optional Wikipedia URL for the item (or null)
              */
             wikipedia?: string | null;
+            /**
+             * @description Filename of the illustration in the `images/webp` folder of the dingen-api repository. Prefix it with `https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/main/images/webp/` for the full URL. Only the filename is stored to keep db.json under the my-json-server size limit.
+             * @example 01-windmills-tulips-canals.webp
+             */
+            image?: string;
         };
     };
     responses: {

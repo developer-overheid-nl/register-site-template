@@ -115,16 +115,17 @@ De demo haalt standaard data op van de [Dingen API](https://github.com/developer
    pnpm start
    ```
 
-   De API draait nu op `http://localhost:3000`. Gebruik `pnpm start:ro` als je alleen `GET`-verzoeken wilt toestaan; met `pnpm start` schrijven `POST`, `PATCH` en `DELETE` direct naar `db.json`.
+   De API draait nu op `http://localhost:3000`, en de illustraties op `http://localhost:3000/webp/`. Gebruik `pnpm start:ro` als je alleen `GET`-verzoeken wilt toestaan; met `pnpm start` schrijven `POST`, `PATCH` en `DELETE` direct naar `db.json`.
 
 2. Maak in deze repository een bestand `.env.local` aan (dit bestand wordt niet gecommit en overschrijft `.env`):
 
    ```sh
    API_URL="http://localhost:3000"
    API_ENDPOINT="developer-overheid-nl/dingen-api"
+   IMAGE_BASE_URL="http://localhost:3000/webp/"
    ```
 
-   `API_ENDPOINT` blijft gelijk aan die in `.env`: de `routes.json` van de API stuurt dat pad door naar de juiste resources.
+   `API_ENDPOINT` blijft gelijk aan die in `.env`: de `routes.json` van de API stuurt dat pad door naar de juiste resources. `IMAGE_BASE_URL` is de map waar de illustraties van de dingen staan; de API geeft alleen de bestandsnaam terug. Zonder deze regel komen de illustraties van GitHub.
 
 3. Herstart `pnpm dev`. Env-bestanden worden alleen bij het opstarten ingelezen.
 
