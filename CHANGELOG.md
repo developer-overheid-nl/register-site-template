@@ -1,5 +1,17 @@
 # @developer-overheid-nl/register-site-template
 
+## 0.4.0
+
+### Minor Changes
+
+- 616fd54: Detail pages now show the thing's illustration and render tags as `PillBadge` links.
+  Set the new `IMAGE_BASE_URL` env var to change where images load from;
+  it defaults to dingen-api's `images/webp` folder on GitHub.
+
+### Patch Changes
+
+- @your_org_name/components@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes
