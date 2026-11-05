@@ -37,7 +37,7 @@ The demo data comes from [dingen-api](https://github.com/developer-overheid-nl/d
    git clone https://github.com/developer-overheid-nl/dingen-api.git ../dingen-api
    cd ../dingen-api
    pnpm install
-   pnpm start:ro    # GET only, on localhost:3000
+   pnpm start:ro    # GET only, on localhost:3000; images on localhost:3000/webp/
    ```
 
    Use `pnpm start:ro` for testing. `pnpm start` allows `POST`/`PATCH`/`DELETE`, which rewrite `db.json` on disk; restore it with `git checkout -- db.json` if that happens by accident.
@@ -46,9 +46,12 @@ The demo data comes from [dingen-api](https://github.com/developer-overheid-nl/d
    ```sh
    API_URL="http://localhost:3000"
    API_ENDPOINT="developer-overheid-nl/dingen-api"
+   IMAGE_BASE_URL="http://localhost:3000/webp/"
    ```
 
    Keep `API_ENDPOINT` unchanged: `routes.json` in dingen-api maps `/developer-overheid-nl/dingen-api/*` to `/*`.
+
+   `IMAGE_BASE_URL` (declared in `astro.config.mjs`, defaults to `https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/main/images/webp/`) is the folder of the thing illustrations. The API stores only the filename in `image`, because full URLs push `db.json` past my-json-server's ~10 KB limit; `getImageUrl()` in `packages/components/helpers` joins the two. The local json-server serves `images/` through `--static ./images`. After adding an env var, run `pnpm astro sync` so `astro:env/server` types include it.
 3. Restart `pnpm dev`. Astro reads env files only at startup.
 
 To switch back to the public API, remove or rename `.env.local` and restart `pnpm dev`.

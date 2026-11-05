@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 
-import { API_ENDPOINT, API_URL } from "astro:env/server";
+import { API_ENDPOINT, API_URL, IMAGE_BASE_URL } from "astro:env/server";
 import {
   Alert,
   AlignBox,
@@ -12,12 +12,14 @@ import {
   Link,
   Markdown,
   Paragraph,
+  PillBadge,
 } from "@developer-overheid-nl/don-register-components";
 import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
   DonBasic,
   DonDetail,
 } from "@developer-overheid-nl/don-register-layouts";
+import { getImageUrl } from "@your_org_name/components";
 import createClient from "openapi-fetch";
 import appConfig from "../../../app.config";
 import type { paths } from "../../types/api-schema";
@@ -52,7 +54,26 @@ i18n.addResourceBundle(
 i18n.addResources(i18n.language, "translation", i18nPage);
 const t = i18n.t;
 
+const tagColors = [
+  "robijnrood",
+  "roze",
+  "rood",
+  "oranje",
+  "donkergeel",
+  "geel",
+  "donkergroen",
+  "groen",
+  "mosgroen",
+  "mintgroen",
+  "donkerblauw",
+  "hemelblauw",
+  "paars",
+  "violet",
+  "lichtblauw",
+];
+
 const details = error ? null : data;
+const imageSrc = getImageUrl(details?.image, IMAGE_BASE_URL);
 ---
 
 {error && (
@@ -78,12 +99,21 @@ const details = error ? null : data;
     <Fragment slot="description">
       <Heading level={3} className="sr-only">{t(`pages.description`)}</Heading>
       <div class="utrecht-html"><Markdown text={details.description} minHeadingDepth={4} /></div>
+      {imageSrc && (
+        <img class="illustration" src={imageSrc} alt={`Illustratie van ${details.name}`} width="960" height="720" decoding="async" />
+      )}
     </Fragment>
     <Fragment slot="meta">
       <AlignBox align="top-left" wrap gap="small" className="features">
         {
           details.tags.map(tag => (
-            <span class="feature-pill">{tag}</span>
+            <a class="feature-pill" href={new URL(`./?tags_like=${encodeURIComponent(tag)}`, Astro.url).toString()}>
+              <PillBadge
+                endValue={tag}
+                startValue="tag"
+                color={tagColors[Math.floor(Math.random() * tagColors.length)]}
+              />
+            </a>
           ))
         }
       </AlignBox>
@@ -97,6 +127,15 @@ const details = error ? null : data;
 )}
 
 <style>
+  .illustration {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    margin-block-start: 1rem;
+    border-radius: 5px;
+    max-inline-size: 400px;
+  }
+
   .features {
     margin-top: 0.5rem;
     font-size: smaller;
@@ -104,9 +143,15 @@ const details = error ? null : data;
   
   .feature-pill {
     display: inline-block;
-    padding-block: 2px;
-    padding-inline: 6px;
-    background-color: var(--rhc-color-cool-grey-200);
-    border-radius: 2px;
+  }
+
+  .feature-pill:hover {
+    background-color: var(--rhc-color-cool-grey-300);
+    text-decoration: underline;
+  }
+
+  .feature-pill:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 </style>

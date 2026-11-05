@@ -19,6 +19,13 @@ export default defineConfig({
         context: "server",
         access: "secret",
       }),
+      IMAGE_BASE_URL: envField.string({
+        context: "server",
+        access: "public",
+        url: true,
+        default:
+          "https://raw.githubusercontent.com/developer-overheid-nl/dingen-api/main/images/webp/",
+      }),
     },
   },
 });

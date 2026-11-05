@@ -1,37 +1,15 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../dingen-api"
-		}
-	],
-	"settings": {
-		"folder-color.pathColors": [
-			{
-				"folderPath": "register-site-template\\packages\\",
-				"isFolderOnly": true,
-				"color": "foldercolorizer.color_00d7af"
-			},
-			{
-				"folderPath": "register-site-template\\proprietary\\",
-				"isFolderOnly": true,
-				"color": "foldercolorizer.color_00d7af"
-			},
-			{
-				"folderPath": "..\\dingen-api\\",
-				"isFolderOnly": true,
-				"color": "foldercolorizer.color_ff5f00"
-			},
-			{
-				"folderPath": "register-site-template\\",
-				"color": "foldercolorizer.color_005fff",
-				"isFolderOnly": true
-			}
-		],
-		"json.schemaDownload.trustedDomains": {
-			"https://unpkg.com/@changesets/": true
-		}
-	}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../dingen-api"
+    }
+  ],
+  "settings": {
+    "json.schemaDownload.trustedDomains": {
+      "https://unpkg.com/@changesets/": true
+    }
+  }
 }
