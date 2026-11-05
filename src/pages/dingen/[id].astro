@@ -12,6 +12,7 @@ import {
   Link,
   Markdown,
   Paragraph,
+  PillBadge,
 } from "@developer-overheid-nl/don-register-components";
 import i18n from "@developer-overheid-nl/don-register-components/i18n";
 import {
@@ -53,6 +54,24 @@ i18n.addResourceBundle(
 i18n.addResources(i18n.language, "translation", i18nPage);
 const t = i18n.t;
 
+const tagColors = [
+  "robijnrood",
+  "roze",
+  "rood",
+  "oranje",
+  "donkergeel",
+  "geel",
+  "donkergroen",
+  "groen",
+  "mosgroen",
+  "mintgroen",
+  "donkerblauw",
+  "hemelblauw",
+  "paars",
+  "violet",
+  "lichtblauw",
+];
+
 const details = error ? null : data;
 const imageSrc = getImageUrl(details?.image, IMAGE_BASE_URL);
 ---
@@ -88,7 +107,13 @@ const imageSrc = getImageUrl(details?.image, IMAGE_BASE_URL);
       <AlignBox align="top-left" wrap gap="small" className="features">
         {
           details.tags.map(tag => (
-            <a class="feature-pill" href={new URL(`./?tags_like=${encodeURIComponent(tag)}`, Astro.url).toString()}>{tag}</a>
+            <a class="feature-pill" href={new URL(`./?tags_like=${encodeURIComponent(tag)}`, Astro.url).toString()}>
+              <PillBadge
+                endValue={tag}
+                startValue="tag"
+                color={tagColors[Math.floor(Math.random() * tagColors.length)]}
+              />
+            </a>
           ))
         }
       </AlignBox>
@@ -118,12 +143,6 @@ const imageSrc = getImageUrl(details?.image, IMAGE_BASE_URL);
   
   .feature-pill {
     display: inline-block;
-    padding-block: 2px;
-    padding-inline: 6px;
-    background-color: var(--rhc-color-cool-grey-200);
-    border-radius: 2px;
-    color: inherit;
-    text-decoration: none;
   }
 
   .feature-pill:hover {
